@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Digital_Patterns.SpecificationCommandLine</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Patterns\SpecificationClassic\SpecificationClassic.csproj" />
+    <ProjectReference Include="..\ICommandLineService\ICommandLineService.csproj" />
+  </ItemGroup>
+
+</Project>
