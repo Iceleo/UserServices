@@ -3,12 +3,13 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Digital_Patterns.SpecificationCommandLine</RootNamespace>
+    <RootNamespace>UserServices.SpecificationCommandLine</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Patterns\SpecificationClassic\SpecificationClassic.csproj" />
-    <ProjectReference Include="..\ICommandLineService\ICommandLineService.csproj" />
+    <!-- ProjectReference Include="..\..\..\Patterns\SpecificationClassic\SpecificationClassic.csproj" /-->
+    <ProjectReference Include="..\SpecificationClassic\SpecificationClassic.csproj" />
+    <ProjectReference Include="..\ICommandLineService\ICommandLineService.csproj" />  
   </ItemGroup>
 
 </Project>

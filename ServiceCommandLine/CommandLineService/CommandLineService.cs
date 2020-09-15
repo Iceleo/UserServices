@@ -7,6 +7,10 @@ using System.IO;
 using System.Collections;
 using System.Reflection;
 using System.ComponentModel;
+using Patterns.SpecificationClassic;
+//using UserServices.ICommandLineService;
+//using UserServices.SpecificationCommandLine;
+//using UserServices.UserAttributedLib;
 
 /// <summary>
 /// —ервис разбора шаблона  командной строки: команд, опций, параметров. 
@@ -38,8 +42,8 @@ public static class CommandLineService //: INotifyDataErrorInfo
     /// <summary>
     /// —писок спецификаций вытекающих из правил записи шаблона командной строки.
     /// </summary>
-    public static List<SpecificationCommandLine<List<CommandLineSample>>> ListSpecificationCommandLine = 
-        new List<SpecificationCommandLine<List<CommandLineSample>>>();
+    public static List<SpecificationCommandLine<List<ICommandLineSample>>> ListSpecificationCommandLine = 
+        new List<SpecificationCommandLine<List<ICommandLineSample>>>();
 
     /// <summary>
     /// —оздание команды вызова приложени€ из командной строки
@@ -187,11 +191,12 @@ public static class CommandLineService //: INotifyDataErrorInfo
     {
         bool rc = true;
         // формируем список за€вленных дл€ выполнени€ команд
-        List<CommandLineSample> cmds = CommandLineService.cmdlines.Where(
-            cm1 => (cm1.IscommandClass & cm1.CommandLineOK)).ToList(); //&& cm1.CommandLineOk
+        List<ICommandLineSample> cmds = CommandLineService.cmdlines.Where(
+            cm1 => (cm1.IscommandClass & cm1.CommandLineOK)).
+            Select(cm2=>(ICommandLineSample)cm2).ToList(); //&& cm1.CommandLineOk
                                              
         //CommandLineService.ListSpecificationCommandLine.IsSatisfiedBy(cmd);
-        foreach (SpecificationCommandLine<List<CommandLineSample>> sp in ListSpecificationCommandLine)
+        foreach (SpecificationCommandLine<List<ICommandLineSample>> sp in ListSpecificationCommandLine)
             if (!sp.IsSatisfiedBy(cmds)) // не прошла проверка
             {
                 _errors.Add( sp.ToString() , sp.GetError());

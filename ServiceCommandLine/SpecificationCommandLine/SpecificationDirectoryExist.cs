@@ -1,8 +1,7 @@
 using System;
-using System.Linq.Expressions;
-using System.ComponentModel;
 using System.Reflection;
-using Digital_Patterns.SpecificationClassic;
+using Patterns.SpecificationClassic;
+//using UserServices.ICommandLineService;
 
 /// <summary>
 ///  Проверка существования директории
@@ -10,7 +9,8 @@ using Digital_Patterns.SpecificationClassic;
 public class SpecificationDirectoryExist : SpecificationClassic<ICommandLineRun>
 //SpecificationExpression<CommandLineSample>
 {
-	readonly string propName;
+    public const char sleshBack = '\\';
+    readonly string propName;
     public SpecificationDirectoryExist(string NameProp)//, string propName)
     {
         propName = NameProp;
@@ -22,8 +22,8 @@ public class SpecificationDirectoryExist : SpecificationClassic<ICommandLineRun>
         PropertyInfo pp = boss.GetType().GetProperty(propName);
         string directory = pp.GetValue( boss, null).ToString();
 //// проверка параметров командной строки
-       if (directory[directory.Length-1] != CommandLineService.sleshBack) // нет закрывающего слеша
-           directory += CommandLineService.sleshBack;
+       if (directory[directory.Length-1] != sleshBack) // нет закрывающего слеша
+           directory += sleshBack;
 
       if ( !string.IsNullOrEmpty(directory) && 
             System.IO.Directory.Exists(directory)) //  "Директорий {directory} существует.";

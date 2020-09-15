@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Patterns.SpecificationClassic;
+//using UserServices.ICommandLineService;
+//using UserServices.SpecificationCommandLine;
+//using UserServices.UserAttributedLib;
 
 public abstract partial class CommandLineRun : ICommandLineRun//, System.ComponentModel.INotifyDataErrorInfo
 {

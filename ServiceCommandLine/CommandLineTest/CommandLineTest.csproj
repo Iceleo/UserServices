@@ -4,7 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>UserServices.CommandLineTest</RootNamespace>
-    <StartupObject>UserServices.CommandLineTest.Program</StartupObject>
+    <StartupObject></StartupObject>
     <NoWin32Manifest>true</NoWin32Manifest>
     <RunPostBuildEvent>Always</RunPostBuildEvent>
   </PropertyGroup>
@@ -14,17 +14,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="CommandLine\**" />
-    <EmbeddedResource Remove="CommandLine\**" />
-    <None Remove="CommandLine\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ICommandLineService\ICommandLineService.csproj" />
     <ProjectReference Include="..\CommandLineService\CommandLineService.csproj" />
     <ProjectReference Include="..\SpecificationCommandLine\SpecificationCommandLine.csproj" />
-    <ProjectReference Include="..\..\UserServices\UserAttributedLib\UserAttributedLib.csproj" />
-    <ProjectReference Include="..\..\..\Patterns\SpecificationClassic\SpecificationClassic.csproj" />
+    <ProjectReference Include="..\..\UserAttributedLib\UserAttributedLib.csproj" />
+    <ProjectReference Include="..\SpecificationClassic\SpecificationClassic.csproj" />
+    <!--ProjectReference Include="..\..\..\Patterns\SpecificationClassic\SpecificationClassic.csproj" /-->
   </ItemGroup>
 
 </Project>

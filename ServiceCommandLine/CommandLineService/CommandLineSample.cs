@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-//using System.Text;
 using System.Reflection;
-//using System.Threading.Tasks;
-
-//    разбор командной строки вызова приложения
+using Patterns.SpecificationClassic;
+// using UserServices.ICommandLineService;
+// using UserServices.SpecificationCommandLine;
+// using UserServices.UserAttributedLib;
 
 /// <summary>
 /// Шаблон подкоманды вызова приложения из командной строки
@@ -38,7 +38,6 @@ public class CommandLineSample : ICommandLineSample
     /// Показать правила вызова подкоманды
     /// </summary>
     public virtual void RulesOfchallenge() =>commandClass?.RulesOfchallenge();
-
 
     /// <summary>
     /// Выполнены ли условия начала работы класса.
@@ -75,40 +74,40 @@ public class CommandLineSample : ICommandLineSample
     /// True - Класс реализущий работу подкоманды создан.
     /// </summary>
     public bool IscommandClass => commandClass != null;
-    
+
     /// <summary>
     /// Параметры подкомманды
     /// </summary>
     public Dictionary<string, string> Parameters { get; protected set; } = new Dictionary<string, string>();
 
     /// <summary>
-    /// Обязательные опции подкомманды
+    /// Обязательные свойства подкомманды
     /// </summary>
-    public Dictionary<string, string> MandatoryOptions { get; protected set; } = new Dictionary<string, string>();
+    public Dictionary<string, string> MandatoryProperties { get; protected set; } = new Dictionary<string, string>();
 
     /// <summary>
-    /// Не обязательные опции подкомманды
+    /// Не обязательные свойства подкомманды
     /// </summary>
-    public Dictionary<string, string> OptionalOptions { get; protected set; } = new Dictionary<string, string>();
+    public Dictionary<string, string> OptionalProperties { get; protected set; } = new Dictionary<string, string>();
     /// <summary>
-    /// Заявить обязательную опцию подкомманды
+    /// Заявить обязательное свойство подкомманды
     /// </summary>
-    /// <param name="name">имя опции</param>
+    /// <param name="name">имя свойства</param>
     /// <returns>сам класс</returns>
-    public CommandLineSample MandatoryOption(string name)
+    public CommandLineSample MandatoryProperty(string name)
     {
-        MandatoryOptions.Add(name.Substring(1).TrimEnd() , null);
+        MandatoryProperties.Add(name.Substring(1).TrimEnd() , null);
         return this;
     }
 
     /// <summary>
-    /// Заявить не обязательную опцию подкомманды
+    /// Заявить не обязательное свойство подкомманды
     /// </summary>
     /// <param name="name"></param>
     /// <returns></returns>
-    public CommandLineSample OptionalOption(string name)
+    public CommandLineSample OptionalProperty(string name)
     {
-        OptionalOptions.Add(name.Substring(1).TrimEnd(), null);
+        OptionalProperties.Add(name.Substring(1).TrimEnd(), null);
         return this;
     }
     /// <summary>
@@ -134,14 +133,14 @@ public class CommandLineSample : ICommandLineSample
     }
 
     /// <summary>
-    /// опции комманды не найденные в свойствах  //Параметры комманды
+    /// свойства комманды не найденные в свойствах  //Параметры комманды
     /// </summary>
     public virtual Dictionary<string, string> PropertiesParamNotFound { get; set; }
 
     /// <summary>
     /// Разбор вызова
     /// </summary>
-    /// <param name="properties">Опции комманды</param>
+    /// <param name="properties">Свойства комманды</param>
     /// <param name="ParametersCmd">Параметры комманды</param>
     /// <param name="result">класс реализущий работу команды</param>
     /// <returns>Результат разбора</returns>
@@ -155,10 +154,10 @@ public class CommandLineSample : ICommandLineSample
         {
             string nameValue = property.Key;
             string ValueOpt = property.Value;
-            if (this.MandatoryOptions.TryGetValue(nameValue, out string val1))
-                this.MandatoryOptions[nameValue] = ValueOpt;
-            else if (this.OptionalOptions.TryGetValue(nameValue, out string val2))
-                this.OptionalOptions[nameValue] = ValueOpt;
+            if (this.MandatoryProperties.TryGetValue(nameValue, out string val1))
+                this.MandatoryProperties[nameValue] = ValueOpt;
+            else if (this.OptionalProperties.TryGetValue(nameValue, out string val2))
+                this.OptionalProperties[nameValue] = ValueOpt;
             else // незнамо что
                 PropertiesParamNotFound.Add( nameValue, ValueOpt);
         }
@@ -190,7 +189,7 @@ public class CommandLineSample : ICommandLineSample
             result = (ICommandLineRun)Activator.CreateInstance(typeclass);            
             this.commandClass = result;
             result.CommandName = this.CommandName; // имена совпадают
-            // свойства - опции для созданного экземляра:
+            // свойства - свойства для созданного экземляра:
             foreach (var property in properties)
                 if (!string.IsNullOrEmpty(property.Key))
                 { //
@@ -250,7 +249,7 @@ public class CommandLineSample : ICommandLineSample
     {
         bool rc = true;
         // d
-        foreach (var property in MandatoryOptions.Where( val => val.Value == null))
+        foreach (var property in MandatoryProperties.Where( val => val.Value == null))
         {// обязательные не указанные при вызове
             ;//if 
         }

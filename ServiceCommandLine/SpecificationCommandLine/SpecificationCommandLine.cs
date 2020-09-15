@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using Digital_Patterns.SpecificationClassic;
+using Patterns.SpecificationClassic;
+//using UserServices.ICommandLineService;
 
 /// <summary>
 ///  Спецификация разбора подкоманд командной строки вызова приложения
@@ -12,11 +13,11 @@ public abstract class SpecificationCommandLine<T> : SpecificationClassic<T>
 	/// <summary>
 	/// Левая подкоманда спецификации 
 	/// </summary>
-	protected readonly CommandLineSample leftCommand ;
+	protected readonly ICommandLineSample leftCommand ;
 	/// <summary>
 	/// Правая подкоманда спецификации 
 	/// </summary>
-	protected readonly CommandLineSample rightCommand;
+	protected readonly ICommandLineSample rightCommand;
 
 	/// <summary>
 	/// Ошибка проверки спецификации
@@ -28,8 +29,8 @@ public abstract class SpecificationCommandLine<T> : SpecificationClassic<T>
 	/// Обозначение спецификации разбора подкоманд
 	/// </summary>
 	String operation;
-	public SpecificationCommandLine(CommandLineSample _leftCommand, 
-		CommandLineSample _rightCommand, string _operation )
+	public SpecificationCommandLine(ICommandLineSample _leftCommand, 
+		ICommandLineSample _rightCommand, string _operation )
     {
 		leftCommand  = _leftCommand ;
 		rightCommand = _rightCommand;

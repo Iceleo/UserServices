@@ -1,7 +1,9 @@
 using System;
 using System.Linq.Expressions;
 using System.Reflection;
-using Digital_Patterns.SpecificationClassic;
+using Patterns.SpecificationClassic;
+//using UserServices.ICommandLineService;
+
 
 /// <summary>
 ///  Проверка существования файла

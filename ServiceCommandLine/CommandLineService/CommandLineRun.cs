@@ -4,7 +4,12 @@ using System.IO;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
-using Digital_Patterns.SpecificationClassic;
+using Patterns.SpecificationClassic;
+// using UserServices.ICommandLineService;
+// using UserServices.SpecificationCommandLine;
+// using UserServices.UserAttributedLib;
+
+
 public abstract partial class CommandLineRun : ICommandLineRun
 {
 
@@ -28,7 +33,7 @@ public abstract partial class CommandLineRun : ICommandLineRun
     public Dictionary<string, string> Parameters { get; protected set; } = new Dictionary<string, string>();
 
     /// <summary>
-    /// опции комманды не найденные в свойствах  //Параметры комманды
+    /// свойства комманды не найденные в свойствах  //Параметры комманды
     /// </summary>
     public virtual Dictionary<string, string> PropertiesNotFound { get; set; }
 

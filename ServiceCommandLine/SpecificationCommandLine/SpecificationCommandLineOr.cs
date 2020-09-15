@@ -1,19 +1,21 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using Digital_Patterns.SpecificationClassic;
+using Patterns.SpecificationClassic;
+//using UserServices.ICommandLineService;
+//using UserServices.CommandLineService;
 
 /// <summary>
 /// логическое И/ИЛИ для вызова  приложения из командной строки. 
 /// Обе подкоманды указываться вместе при вызыве не могут
 /// </summary>
-public class SpecificationCommandLineOr : SpecificationCommandLine<List<CommandLineSample>>
+public class SpecificationCommandLineOr : SpecificationCommandLine<List<ICommandLineSample>>
 //SpecificationExpression<List<CommandLineSample>>
 {
  
-    public SpecificationCommandLineOr(CommandLineSample _leftCommand, CommandLineSample _rightCommand)
+    public SpecificationCommandLineOr(ICommandLineSample _leftCommand, ICommandLineSample _rightCommand)
 		: base (_leftCommand, _rightCommand, "|") { }
-   public override bool IsSatisfiedBy(List<CommandLineSample> cmdList)
+   public override bool IsSatisfiedBy(List<ICommandLineSample> cmdList)
 	{ //
 	  bool rc = (cmdList.Contains(leftCommand)) | (cmdList.Contains(rightCommand));
 	  if ( !rc) //

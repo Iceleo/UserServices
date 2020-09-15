@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ICommandLineService\ICommandLineService.csproj" />
+    <ProjectReference Include="..\SpecificationCommandLine\SpecificationCommandLine.csproj" />
     <ProjectReference Include="..\SpecificationClassic\SpecificationClassic.csproj" />
     <ProjectReference Include="..\..\UserAttributedLib\UserAttributedLib.csproj" />
   </ItemGroup>

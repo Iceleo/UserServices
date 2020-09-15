@@ -1,18 +1,19 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using Digital_Patterns.SpecificationClassic;
+using Patterns.SpecificationClassic;
+//using UserServices.ICommandLineService;
 
 /// <summary>
 /// логическое И для вызова  приложения из командной строки. 
 /// Обе подкоманды должны вместе указываться при вызыве 
 /// </summary>
-public class SpecificationCommandLineAnd : SpecificationCommandLine<List<CommandLineSample>>
+public class SpecificationCommandLineAnd : SpecificationCommandLine<List<ICommandLineSample>>
 //SpecificationExpression<CommandLineSample>
 {
-    public SpecificationCommandLineAnd(CommandLineSample _leftCommand, CommandLineSample _rightCommand) 
+    public SpecificationCommandLineAnd(ICommandLineSample _leftCommand, ICommandLineSample _rightCommand) 
 		: base (_leftCommand, _rightCommand, "&") { }
-    public override bool IsSatisfiedBy(List<CommandLineSample> cmdList)
+    public override bool IsSatisfiedBy(List<ICommandLineSample> cmdList)
     { //
         bool rc = false;
 		if (cmdList.Contains(leftCommand))

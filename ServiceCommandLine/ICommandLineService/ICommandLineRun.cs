@@ -9,7 +9,7 @@ public interface ICommandLineRun : ICommandLine, INotifyDataErrorInfo
     /// </summary>
     string AppName { get; set; }
     /// <summary>
-    /// опции комманды не найденные в свойствах  //Параметры комманды
+    /// свойства комманды не найденные в свойствах  //Параметры комманды
     /// </summary>
     Dictionary<string, string> PropertiesNotFound { get; set; }
 

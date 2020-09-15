@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 //using System.Linq.Expressions;
 using System.Reflection;
-using Digital_Patterns.SpecificationClassic;
 using System.ComponentModel.DataAnnotations;
+using Patterns.SpecificationClassic;
+//using UserServices.ICommandLineService;
 
 /// <summary>
 /// Проверки достоверности свойства на основе аннотаций данных 

@@ -3,6 +3,9 @@
 ### build/ # игнорировать все файлы в папке build/
 ### doc/*.txt # игнорировать doc/notes.txt, но не doc/server/arch.txt
 
+#Temp directorу, the directorу of the temporary development.
+ConsoleApp1/
+ExcelImporterLib/
 
 /packages/
 ## Ignore Visual Studio temporary files, build results, and

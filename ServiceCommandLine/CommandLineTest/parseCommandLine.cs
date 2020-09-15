@@ -6,10 +6,10 @@ using System.Configuration;
 using System.Xml;
 using System.Xml.Serialization;
 using Patterns.SpecificationClassic;
-using UserServices.ICommandLineService;
-using UserServices.CommandLineService;
-using UserServices.SpecificationCommandLine;
-using UserServices.UserAttributedLib;
+//using UserServices.ICommandLineService;
+//using UserServices.CommandLineService;
+//using UserServices.SpecificationCommandLine;
+//using UserServices.UserAttributedLib;
 
 
     /// <summary>

@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Patterns.SpecificationClassic;
-using UserServices.ICommandLineService;
-using UserServices.CommandLineService;
-using UserServices.SpecificationCommandLine;
-using UserServices.UserAttributedLib;
+//using UserServices.ICommandLineService;
+//using UserServices.CommandLineService;
+//using UserServices.SpecificationCommandLine;
+//using UserServices.UserAttributedLib;
 
 
     /// <summary>
@@ -42,7 +42,7 @@ using UserServices.UserAttributedLib;
         /// </summary>
         public override void RulesOfchallenge()
         { 
-                Console.WriteLine("The syntax for calling: {0} /{1}  MandatoryOptions:  -NameOption=ValueOption", AppName, this.CommandName);
+                Console.WriteLine("The syntax for calling: {0} /{1}  MandatoryProperties:  -NamePropertie=ValuePropertie", AppName, this.CommandName);
                 Console.WriteLine("The syntax for help: {0} /help CommandName", AppName);
 	    }
     }
