@@ -6,6 +6,7 @@
 #Temp directoró, the directoró of the temporary development.
 ConsoleApp1/
 ExcelImporterLib/
+*.cmd
 
 /packages/
 ## Ignore Visual Studio temporary files, build results, and
