@@ -1,11 +1,12 @@
 ﻿using System;
 using Patterns.SpecificationClassic;
-using UserServices.ICommandLineService;
-using UserServices.CommandLineService;
-using UserServices.SpecificationCommandLine;
-using UserServices.UserAttributedLib;
+//using UserServices.ICommandLineService;
+//using UserServices.CommandLineService;
+//using UserServices.SpecificationCommandLine;
+//using UserServices.UserAttributedLib;
 
-
+namespace UserServices.CommandLineTest
+{
     class Program
     {
         /// <summary>
@@ -13,13 +14,13 @@ using UserServices.UserAttributedLib;
         /// </summary>
         public static readonly CommandLineSample comndline =
             CommandLineService.WithCommand("/parse")
-                               .MandatoryOption("-targethost")
-                               .MandatoryOption("-pathbase")
-                               .MandatoryOption("-pathconfig")
-                               .OptionalOption("-depthtransitions")
+                               .MandatoryProperty("-targethost")
+                               .MandatoryProperty("-pathbase")
+                               .MandatoryProperty("-pathconfig")
+                               .OptionalProperty("-depthtransitions")
                    .ParameterCmdLine("LoadData")
-			       .ParameterCmdLine("SaveData")
-                               .OptionalOption("-FileSerialize")
+                   .ParameterCmdLine("SaveData")
+                               .OptionalProperty("-FileSerialize")
                  //имя исполняющего команду класса. Пишем вместе с именем пространства. Важно если много сборок.
                  //Иначе имя пространства шаблона и исполняющего команду класса совпадают.
                  .PerformingClass("SpecificationCommandLine.Run.parseCommandLine")
@@ -30,11 +31,11 @@ using UserServices.UserAttributedLib;
             //имя исполняющего команду класса вместе с именем пространства
             ^ // XOR. Может выполняется  или /parse или /test
             CommandLineService.WithCommand("/test")
-                               .MandatoryOption("-testbase")
-                               .MandatoryOption("-testconfig")
+                               .MandatoryProperty("-testbase")
+                               .MandatoryProperty("-testconfig")
                  .PerformingClass("SpecificationCommandLine.Run.testCommandLine");
-// :  /parse -pathbase=C:\work\test1\ -pathconfig=C:\work\my_parse -targethost=https://panel.qnits.ru/manager_mvc/offers
-// :  /test -testbase=C:\work\test1\ -testconfig=C:\work\my_parse -targethost=https://panel.qnits.ru/manager_mvc/offers
+        // :  /parse -pathbase=C:\work\test1\ -pathconfig=C:\work\my_parse -targethost=https://panel.qnits.ru/manager_mvc/offers
+        // :  /test -testbase=C:\work\test1\ -testconfig=C:\work\my_parse -targethost=https://panel.qnits.ru/manager_mvc/offers
 
         static void Main(string[] args)
         {
@@ -47,18 +48,18 @@ using UserServices.UserAttributedLib;
                     CommandLineService.Run();
                     foreach (var cc1 in CommandLineService.cmdlines)
                     {
-                        foreach(var pp1 in cc1.MandatoryOptions)
+                        foreach (var pp1 in cc1.MandatoryProperties)
                         {
-                            Console.WriteLine($"MandatoryOptions: Свойство {pp1.Key }:{pp1.Value} .");
+                            Console.WriteLine($"MandatoryProperties: Свойство {pp1.Key }:{pp1.Value} .");
                         }
                         cc1.Parameters.ToString();
                     }
 
                     foreach (var cc1 in CommandLineService.cmdlines)
                     {
-                        foreach (var pp1 in cc1.OptionalOptions )
+                        foreach (var pp1 in cc1.OptionalProperties)
                         {
-                            Console.WriteLine($"OptionalOptions: Свойство {pp1.Key } :{pp1.Value} .");
+                            Console.WriteLine($"OptionalProperties: Свойство {pp1.Key } :{pp1.Value} .");
                         }
                         cc1.Parameters.ToString();
                     }
@@ -68,9 +69,9 @@ using UserServices.UserAttributedLib;
                         cc1.Parameters.ToString();
                     }
                     //string[] st = CommandLineService.GetErrors().`  Tuple<string , string >
-                    foreach ( var st1 in CommandLineService.GetErrors())
+                    foreach (var st1 in CommandLineService.GetErrors())
                     {
-                      Console.WriteLine($"Свойство {st1.Key } ошибка:{st1.Value} .");
+                        Console.WriteLine($"Свойство {st1.Key } ошибка:{st1.Value} .");
                     }
                 }
                 else // вывод ошибок
@@ -84,3 +85,4 @@ using UserServices.UserAttributedLib;
             Console.ReadKey();
         }
     }
+}
