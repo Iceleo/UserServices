@@ -5,32 +5,32 @@ using System.ComponentModel;
 public interface ICommandLineRun : ICommandLine, INotifyDataErrorInfo
  {
     /// <summary>
-    /// имя приложения 
+    /// РёРјСЏ РїСЂРёР»РѕР¶РµРЅРёСЏ 
     /// </summary>
     string AppName { get; set; }
     /// <summary>
-    /// свойства комманды не найденные в свойствах  //Параметры комманды
+    /// СЃРІРѕР№СЃС‚РІР° РєРѕРјРјР°РЅРґС‹ РЅРµ РЅР°Р№РґРµРЅРЅС‹Рµ РІ СЃРІРѕР№СЃС‚РІР°С…  //РџР°СЂР°РјРµС‚СЂС‹ РєРѕРјРјР°РЅРґС‹
     /// </summary>
     Dictionary<string, string> PropertiesNotFound { get; set; }
 
     /// <summary>
-    /// Удовлетворяются ли условия начала работы класса
+    /// РЈРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‚СЃСЏ Р»Рё СѓСЃР»РѕРІРёСЏ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ РєР»Р°СЃСЃР°
     /// </summary>
-    /// <returns>True - условия начала работы класса удовлетворены</returns>
+    /// <returns>True - СѓСЃР»РѕРІРёСЏ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ РєР»Р°СЃСЃР° СѓРґРѕРІР»РµС‚РІРѕСЂРµРЅС‹</returns>
     bool IsSatisfiedBy(Dictionary<string, string> PropertiesNotFound);
 
         /// <summary>
-        /// Добавить ошибку для свойства
+        /// Р”РѕР±Р°РІРёС‚СЊ РѕС€РёР±РєСѓ РґР»СЏ СЃРІРѕР№СЃС‚РІР°
         /// </summary>
-        /// <param name="propName">Имя свойства.</param>
-        /// <param name="error">Выявленная ошибка.</param>
+        /// <param name="propName">РРјСЏ СЃРІРѕР№СЃС‚РІР°.</param>
+        /// <param name="error">Р’С‹СЏРІР»РµРЅРЅР°СЏ РѕС€РёР±РєР°.</param>
     void AddError(string propName, string error);
 
     /// <summary>
-    /// Добавить ошибки для свойства
+    /// Р”РѕР±Р°РІРёС‚СЊ РѕС€РёР±РєРё РґР»СЏ СЃРІРѕР№СЃС‚РІР°
     /// </summary>
-    /// <param name="propName">Имя свойства.</param>
-    /// <param name="errorList">Выявленные ошибки.</param>
+    /// <param name="propName">РРјСЏ СЃРІРѕР№СЃС‚РІР°.</param>
+    /// <param name="errorList">Р’С‹СЏРІР»РµРЅРЅС‹Рµ РѕС€РёР±РєРё.</param>
     void AddListErrors(string propName, List<string> errorList);
 
 }

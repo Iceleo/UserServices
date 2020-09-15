@@ -8,15 +8,15 @@ using Patterns.SpecificationClassic;
 // using UserServices.UserAttributedLib;
 
 /// <summary>
-/// Шаблон подкоманды вызова приложения из командной строки
-/// Создаем спецификация совместимости экземпляров шаблонов, 
-/// который соответствует критериям указываемых при составлении шаблона. 
+/// РЁР°Р±Р»РѕРЅ РїРѕРґРєРѕРјР°РЅРґС‹ РІС‹Р·РѕРІР° РїСЂРёР»РѕР¶РµРЅРёСЏ РёР· РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё
+/// РЎРѕР·РґР°РµРј СЃРїРµС†РёС„РёРєР°С†РёСЏ СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё СЌРєР·РµРјРїР»СЏСЂРѕРІ С€Р°Р±Р»РѕРЅРѕРІ, 
+/// РєРѕС‚РѕСЂС‹Р№ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ РєСЂРёС‚РµСЂРёСЏРј СѓРєР°Р·С‹РІР°РµРјС‹С… РїСЂРё СЃРѕСЃС‚Р°РІР»РµРЅРёРё С€Р°Р±Р»РѕРЅР°. 
 /// </summary>
 public class CommandLineSample : ICommandLineSample
 { // 
     /// <summary>
-    /// Шаблон для формирования имени исполняющего команду класса.
-    /// с имененем нelp - класс нelpCommandLine
+    /// РЁР°Р±Р»РѕРЅ РґР»СЏ С„РѕСЂРјРёСЂРѕРІР°РЅРёСЏ РёРјРµРЅРё РёСЃРїРѕР»РЅСЏСЋС‰РµРіРѕ РєРѕРјР°РЅРґСѓ РєР»Р°СЃСЃР°.
+    /// СЃ РёРјРµРЅРµРЅРµРј РЅelp - РєР»Р°СЃСЃ РЅelpCommandLine
     /// </summary>
     public const string constSufficsClass = "CommandLine";
 
@@ -25,75 +25,75 @@ public class CommandLineSample : ICommandLineSample
         CommandName = commandName;
     }
     /// <summary>
-    /// выполнить 
+    /// РІС‹РїРѕР»РЅРёС‚СЊ 
     /// </summary>
     public virtual void Run() => commandClass?.Run(); 
 
     /// <summary>
-    /// справка
+    /// СЃРїСЂР°РІРєР°
     /// </summary>
     public virtual void Help() =>commandClass?.Help();
 
     /// <summary>
-    /// Показать правила вызова подкоманды
+    /// РџРѕРєР°Р·Р°С‚СЊ РїСЂР°РІРёР»Р° РІС‹Р·РѕРІР° РїРѕРґРєРѕРјР°РЅРґС‹
     /// </summary>
     public virtual void RulesOfchallenge() =>commandClass?.RulesOfchallenge();
 
     /// <summary>
-    /// Выполнены ли условия начала работы класса.
-    /// True - Выполнены.
+    /// Р’С‹РїРѕР»РЅРµРЅС‹ Р»Рё СѓСЃР»РѕРІРёСЏ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ РєР»Р°СЃСЃР°.
+    /// True - Р’С‹РїРѕР»РЅРµРЅС‹.
     /// </summary>
     public bool CommandLineOK { get; protected set; } = true;
 
     /// <summary>
-    /// Установить - условия начала работы класса не выполнимы.
+    /// РЈСЃС‚Р°РЅРѕРІРёС‚СЊ - СѓСЃР»РѕРІРёСЏ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ РєР»Р°СЃСЃР° РЅРµ РІС‹РїРѕР»РЅРёРјС‹.
     /// </summary>
     public void SetCommandLineBad() => CommandLineOK = false;
 
     /// <summary>
-    /// Имя подкомманды
+    /// РРјСЏ РїРѕРґРєРѕРјРјР°РЅРґС‹
     /// </summary>
     public string CommandName { get; set; } // => _commandName;
 
     /// <summary>
-    /// Имя исполняющего команду класса вместе с именем пространства
+    /// РРјСЏ РёСЃРїРѕР»РЅСЏСЋС‰РµРіРѕ РєРѕРјР°РЅРґСѓ РєР»Р°СЃСЃР° РІРјРµСЃС‚Рµ СЃ РёРјРµРЅРµРј РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІР°
     /// </summary>
     protected string NameClassRun { get; set; }
 
     /// <summary>
-    /// Имя namespace для commandClass( класса реализущий работу команды). Если нужно
+    /// РРјСЏ namespace РґР»СЏ commandClass( РєР»Р°СЃСЃР° СЂРµР°Р»РёР·СѓС‰РёР№ СЂР°Р±РѕС‚Сѓ РєРѕРјР°РЅРґС‹). Р•СЃР»Рё РЅСѓР¶РЅРѕ
     /// </summary>
     //public string namespaceClass;
 
     /// <summary>
-    /// класс реализущий работу подкоманды.
+    /// РєР»Р°СЃСЃ СЂРµР°Р»РёР·СѓС‰РёР№ СЂР°Р±РѕС‚Сѓ РїРѕРґРєРѕРјР°РЅРґС‹.
     /// </summary>
     protected ICommandLineRun commandClass { get; set; }
 
     /// <summary>
-    /// True - Класс реализущий работу подкоманды создан.
+    /// True - РљР»Р°СЃСЃ СЂРµР°Р»РёР·СѓС‰РёР№ СЂР°Р±РѕС‚Сѓ РїРѕРґРєРѕРјР°РЅРґС‹ СЃРѕР·РґР°РЅ.
     /// </summary>
     public bool IscommandClass => commandClass != null;
 
     /// <summary>
-    /// Параметры подкомманды
+    /// РџР°СЂР°РјРµС‚СЂС‹ РїРѕРґРєРѕРјРјР°РЅРґС‹
     /// </summary>
     public Dictionary<string, string> Parameters { get; protected set; } = new Dictionary<string, string>();
 
     /// <summary>
-    /// Обязательные свойства подкомманды
+    /// РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ СЃРІРѕР№СЃС‚РІР° РїРѕРґРєРѕРјРјР°РЅРґС‹
     /// </summary>
     public Dictionary<string, string> MandatoryProperties { get; protected set; } = new Dictionary<string, string>();
 
     /// <summary>
-    /// Не обязательные свойства подкомманды
+    /// РќРµ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ СЃРІРѕР№СЃС‚РІР° РїРѕРґРєРѕРјРјР°РЅРґС‹
     /// </summary>
     public Dictionary<string, string> OptionalProperties { get; protected set; } = new Dictionary<string, string>();
     /// <summary>
-    /// Заявить обязательное свойство подкомманды
+    /// Р—Р°СЏРІРёС‚СЊ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕРµ СЃРІРѕР№СЃС‚РІРѕ РїРѕРґРєРѕРјРјР°РЅРґС‹
     /// </summary>
-    /// <param name="name">имя свойства</param>
-    /// <returns>сам класс</returns>
+    /// <param name="name">РёРјСЏ СЃРІРѕР№СЃС‚РІР°</param>
+    /// <returns>СЃР°Рј РєР»Р°СЃСЃ</returns>
     public CommandLineSample MandatoryProperty(string name)
     {
         MandatoryProperties.Add(name.Substring(1).TrimEnd() , null);
@@ -101,7 +101,7 @@ public class CommandLineSample : ICommandLineSample
     }
 
     /// <summary>
-    /// Заявить не обязательное свойство подкомманды
+    /// Р—Р°СЏРІРёС‚СЊ РЅРµ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕРµ СЃРІРѕР№СЃС‚РІРѕ РїРѕРґРєРѕРјРјР°РЅРґС‹
     /// </summary>
     /// <param name="name"></param>
     /// <returns></returns>
@@ -111,7 +111,7 @@ public class CommandLineSample : ICommandLineSample
         return this;
     }
     /// <summary>
-    /// Заявить параметр подкомманды
+    /// Р—Р°СЏРІРёС‚СЊ РїР°СЂР°РјРµС‚СЂ РїРѕРґРєРѕРјРјР°РЅРґС‹
     /// </summary>
     /// <param name="name"></param>
     /// <returns></returns>
@@ -121,7 +121,7 @@ public class CommandLineSample : ICommandLineSample
         return this;
     }
     /// <summary>
-    ///  Имя исполняющего подкоманду класса вместе с именем пространства
+    ///  РРјСЏ РёСЃРїРѕР»РЅСЏСЋС‰РµРіРѕ РїРѕРґРєРѕРјР°РЅРґСѓ РєР»Р°СЃСЃР° РІРјРµСЃС‚Рµ СЃ РёРјРµРЅРµРј РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІР°
     /// </summary>
     /// <param name="name"></param>
     /// <returns></returns>
@@ -133,17 +133,17 @@ public class CommandLineSample : ICommandLineSample
     }
 
     /// <summary>
-    /// свойства комманды не найденные в свойствах  //Параметры комманды
+    /// СЃРІРѕР№СЃС‚РІР° РєРѕРјРјР°РЅРґС‹ РЅРµ РЅР°Р№РґРµРЅРЅС‹Рµ РІ СЃРІРѕР№СЃС‚РІР°С…  //РџР°СЂР°РјРµС‚СЂС‹ РєРѕРјРјР°РЅРґС‹
     /// </summary>
     public virtual Dictionary<string, string> PropertiesParamNotFound { get; set; }
 
     /// <summary>
-    /// Разбор вызова
+    /// Р Р°Р·Р±РѕСЂ РІС‹Р·РѕРІР°
     /// </summary>
-    /// <param name="properties">Свойства комманды</param>
-    /// <param name="ParametersCmd">Параметры комманды</param>
-    /// <param name="result">класс реализущий работу команды</param>
-    /// <returns>Результат разбора</returns>
+    /// <param name="properties">РЎРІРѕР№СЃС‚РІР° РєРѕРјРјР°РЅРґС‹</param>
+    /// <param name="ParametersCmd">РџР°СЂР°РјРµС‚СЂС‹ РєРѕРјРјР°РЅРґС‹</param>
+    /// <param name="result">РєР»Р°СЃСЃ СЂРµР°Р»РёР·СѓС‰РёР№ СЂР°Р±РѕС‚Сѓ РєРѕРјР°РЅРґС‹</param>
+    /// <returns>Р РµР·СѓР»СЊС‚Р°С‚ СЂР°Р·Р±РѕСЂР°</returns>
     public bool ParseCommandLine( Dictionary<string, string> properties,
             List<string> ParametersCmd)
     {
@@ -158,7 +158,7 @@ public class CommandLineSample : ICommandLineSample
                 this.MandatoryProperties[nameValue] = ValueOpt;
             else if (this.OptionalProperties.TryGetValue(nameValue, out string val2))
                 this.OptionalProperties[nameValue] = ValueOpt;
-            else // незнамо что
+            else // РЅРµР·РЅР°РјРѕ С‡С‚Рѕ
                 PropertiesParamNotFound.Add( nameValue, ValueOpt);
         }
 
@@ -166,7 +166,7 @@ public class CommandLineSample : ICommandLineSample
         {
             if (this.Parameters.TryGetValue(nameParam, out string val3))
                 this.Parameters[nameParam] = string.Empty;
-            else // незнамо что
+            else // РЅРµР·РЅР°РјРѕ С‡С‚Рѕ
                   PropertiesParamNotFound.Add(nameParam, string.Empty);
         }
         try
@@ -174,10 +174,10 @@ public class CommandLineSample : ICommandLineSample
             string classNameCmd = string.Empty;
             if ( string.IsNullOrEmpty(this.NameClassRun))
             {
-                //имя исполняющего команду класса вместе с именем пространства
-                // Для команды с имененем нelp - класс нelpCommandLine:
-                // Для команды с имененем parse - класс parseCommandLine:
-                // именем пространства совпадают
+                //РёРјСЏ РёСЃРїРѕР»РЅСЏСЋС‰РµРіРѕ РєРѕРјР°РЅРґСѓ РєР»Р°СЃСЃР° РІРјРµСЃС‚Рµ СЃ РёРјРµРЅРµРј РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІР°
+                // Р”Р»СЏ РєРѕРјР°РЅРґС‹ СЃ РёРјРµРЅРµРЅРµРј РЅelp - РєР»Р°СЃСЃ РЅelpCommandLine:
+                // Р”Р»СЏ РєРѕРјР°РЅРґС‹ СЃ РёРјРµРЅРµРЅРµРј parse - РєР»Р°СЃСЃ parseCommandLine:
+                // РёРјРµРЅРµРј РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІР° СЃРѕРІРїР°РґР°СЋС‚
                 classNameCmd += this.GetType().Namespace + '.' 
                     +this.CommandName + constSufficsClass;                
             }
@@ -185,23 +185,23 @@ public class CommandLineSample : ICommandLineSample
                 classNameCmd = this.NameClassRun;
             
             Type typeclass = Type.GetType(classNameCmd); // 
-            // И создадим его экземпляр:  
+            // Р СЃРѕР·РґР°РґРёРј РµРіРѕ СЌРєР·РµРјРїР»СЏСЂ:  
             result = (ICommandLineRun)Activator.CreateInstance(typeclass);            
             this.commandClass = result;
-            result.CommandName = this.CommandName; // имена совпадают
-            // свойства - свойства для созданного экземляра:
+            result.CommandName = this.CommandName; // РёРјРµРЅР° СЃРѕРІРїР°РґР°СЋС‚
+            // СЃРІРѕР№СЃС‚РІР° - СЃРІРѕР№СЃС‚РІР° РґР»СЏ СЃРѕР·РґР°РЅРЅРѕРіРѕ СЌРєР·РµРјР»СЏСЂР°:
             foreach (var property in properties)
                 if (!string.IsNullOrEmpty(property.Key))
                 { //
                     PropertyInfo pp = typeclass.GetProperty(property.Key);
                     if (pp != null) //
                     {
-                        CommandLineService.SetValue(pp, result, property.Value, out string error); // заполним значение в свойстве
-                        pp.SetValue(result, property.Value); // значения параметров пишем в свойства
+                        CommandLineService.SetValue(pp, result, property.Value, out string error); // Р·Р°РїРѕР»РЅРёРј Р·РЅР°С‡РµРЅРёРµ РІ СЃРІРѕР№СЃС‚РІРµ
+                        pp.SetValue(result, property.Value); // Р·РЅР°С‡РµРЅРёСЏ РїР°СЂР°РјРµС‚СЂРѕРІ РїРёС€РµРј РІ СЃРІРѕР№СЃС‚РІР°
                     }    
                 }
 
-            // свойства - параметры для созданного экземляра:
+            // СЃРІРѕР№СЃС‚РІР° - РїР°СЂР°РјРµС‚СЂС‹ РґР»СЏ СЃРѕР·РґР°РЅРЅРѕРіРѕ СЌРєР·РµРјР»СЏСЂР°:
             foreach (string nameParam in ParametersCmd) //
                 if ( !string.IsNullOrEmpty(nameParam)) //
                     typeclass.GetProperty(nameParam)?.SetValue(result, true);
@@ -209,48 +209,48 @@ public class CommandLineSample : ICommandLineSample
             rc = true;
         }
         catch (System.ArgumentException exc1)
-        { //     Параметр type не является объектом типа RuntimeType. -или- Значение параметра
-          //     type является открытым универсальным типом (иными словами, свойство 
+        { //     РџР°СЂР°РјРµС‚СЂ type РЅРµ СЏРІР»СЏРµС‚СЃСЏ РѕР±СЉРµРєС‚РѕРј С‚РёРїР° RuntimeType. -РёР»Рё- Р—РЅР°С‡РµРЅРёРµ РїР°СЂР°РјРµС‚СЂР°
+          //     type СЏРІР»СЏРµС‚СЃСЏ РѕС‚РєСЂС‹С‚С‹Рј СѓРЅРёРІРµСЂСЃР°Р»СЊРЅС‹Рј С‚РёРїРѕРј (РёРЅС‹РјРё СЃР»РѕРІР°РјРё, СЃРІРѕР№СЃС‚РІРѕ 
         }
         catch (System.NotSupportedException exc2)
-        {//     Тип, заданный параметром type, не может быть System.Reflection.Emit.TypeBuilder.
-         //     -или- Создание типов System.TypedReference, System.ArgIterator, System.Void
-         //     и System.RuntimeArgumentHandle или массивов этих типов не поддерживается.
-         //     -или- Сборка, содержащая тип type, является динамической сборкой, созданной
-         //     с помощью System.Reflection.Emit.AssemblyBuilderAccess.Save.
+        {//     РўРёРї, Р·Р°РґР°РЅРЅС‹Р№ РїР°СЂР°РјРµС‚СЂРѕРј type, РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ System.Reflection.Emit.TypeBuilder.
+         //     -РёР»Рё- РЎРѕР·РґР°РЅРёРµ С‚РёРїРѕРІ System.TypedReference, System.ArgIterator, System.Void
+         //     Рё System.RuntimeArgumentHandle РёР»Рё РјР°СЃСЃРёРІРѕРІ СЌС‚РёС… С‚РёРїРѕРІ РЅРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚СЃСЏ.
+         //     -РёР»Рё- РЎР±РѕСЂРєР°, СЃРѕРґРµСЂР¶Р°С‰Р°СЏ С‚РёРї type, СЏРІР»СЏРµС‚СЃСЏ РґРёРЅР°РјРёС‡РµСЃРєРѕР№ СЃР±РѕСЂРєРѕР№, СЃРѕР·РґР°РЅРЅРѕР№
+         //     СЃ РїРѕРјРѕС‰СЊСЋ System.Reflection.Emit.AssemblyBuilderAccess.Save.
         }
         catch (System.Reflection.TargetInvocationException exc3)
-        { //     Вызываемый конструктор создает исключение.
+        { //     Р’С‹Р·С‹РІР°РµРјС‹Р№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃРѕР·РґР°РµС‚ РёСЃРєР»СЋС‡РµРЅРёРµ.
         }
         catch (System.MethodAccessException exc4)
-        {//     Вызывающий код не имеет разрешения на вызов этого конструктора.
+        {//     Р’С‹Р·С‹РІР°СЋС‰РёР№ РєРѕРґ РЅРµ РёРјРµРµС‚ СЂР°Р·СЂРµС€РµРЅРёСЏ РЅР° РІС‹Р·РѕРІ СЌС‚РѕРіРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°.
         }
         catch (System.MemberAccessException exc5)
-        { //     Не удается создать экземпляр абстрактного класса, или этот член был вызван
-          //     при помощи механизма поздней привязки.
+        { //     РќРµ СѓРґР°РµС‚СЃСЏ СЃРѕР·РґР°С‚СЊ СЌРєР·РµРјРїР»СЏСЂ Р°Р±СЃС‚СЂР°РєС‚РЅРѕРіРѕ РєР»Р°СЃСЃР°, РёР»Рё СЌС‚РѕС‚ С‡Р»РµРЅ Р±С‹Р» РІС‹Р·РІР°РЅ
+          //     РїСЂРё РїРѕРјРѕС‰Рё РјРµС…Р°РЅРёР·РјР° РїРѕР·РґРЅРµР№ РїСЂРёРІСЏР·РєРё.
         }
         catch (System.Runtime.InteropServices.InvalidComObjectException exc6)
-        { //     COM-тип не был получен посредством Overload:System.Type.GetTypeFromCLSID
-          //     или Overload:System.Type.GetTypeFromProgID.
+        { //     COM-С‚РёРї РЅРµ Р±С‹Р» РїРѕР»СѓС‡РµРЅ РїРѕСЃСЂРµРґСЃС‚РІРѕРј Overload:System.Type.GetTypeFromCLSID
+          //     РёР»Рё Overload:System.Type.GetTypeFromProgID.
         }
         catch (System.Runtime.InteropServices.COMException exc8)
-        { //     Параметр type представляет COM-объект, но идентификатор класса, используемый
-          //     для получения типа, является недопустимым, или идентифицируемый класс не
-          //     зарегистрирован.
+        { //     РџР°СЂР°РјРµС‚СЂ type РїСЂРµРґСЃС‚Р°РІР»СЏРµС‚ COM-РѕР±СЉРµРєС‚, РЅРѕ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РєР»Р°СЃСЃР°, РёСЃРїРѕР»СЊР·СѓРµРјС‹Р№
+          //     РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ С‚РёРїР°, СЏРІР»СЏРµС‚СЃСЏ РЅРµРґРѕРїСѓСЃС‚РёРјС‹Рј, РёР»Рё РёРґРµРЅС‚РёС„РёС†РёСЂСѓРµРјС‹Р№ РєР»Р°СЃСЃ РЅРµ
+          //     Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ.
         }
         return rc;
     }
 
     /// <summary>
-    /// Удовлетворяются ли условия начала работы подкоманды
+    /// РЈРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‚СЃСЏ Р»Рё СѓСЃР»РѕРІРёСЏ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ РїРѕРґРєРѕРјР°РЅРґС‹
     /// </summary>
-    /// <returns>True - условия начала работы класса удовлетворены</returns>
+    /// <returns>True - СѓСЃР»РѕРІРёСЏ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ РєР»Р°СЃСЃР° СѓРґРѕРІР»РµС‚РІРѕСЂРµРЅС‹</returns>
     public bool IsSatisfiedBy()
     {
         bool rc = true;
         // d
         foreach (var property in MandatoryProperties.Where( val => val.Value == null))
-        {// обязательные не указанные при вызове
+        {// РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РЅРµ СѓРєР°Р·Р°РЅРЅС‹Рµ РїСЂРё РІС‹Р·РѕРІРµ
             ;//if 
         }
         rc = (bool) commandClass?.IsSatisfiedBy( PropertiesParamNotFound);
@@ -259,45 +259,45 @@ public class CommandLineSample : ICommandLineSample
 
   #region static
     /// <summary>
-    /// Создаем спецификация XOR совместимости экземпляров шаблонов, 
-    /// который соответствует критериям указываемых при составлении шаблона. 
+    /// РЎРѕР·РґР°РµРј СЃРїРµС†РёС„РёРєР°С†РёСЏ XOR СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё СЌРєР·РµРјРїР»СЏСЂРѕРІ С€Р°Р±Р»РѕРЅРѕРІ, 
+    /// РєРѕС‚РѕСЂС‹Р№ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ РєСЂРёС‚РµСЂРёСЏРј СѓРєР°Р·С‹РІР°РµРјС‹С… РїСЂРё СЃРѕСЃС‚Р°РІР»РµРЅРёРё С€Р°Р±Р»РѕРЅР°. 
     /// </summary>
     /// <param name="leftCommand"></param>
     /// <param name="rightCommand"></param>
     /// <returns></returns>
     public static CommandLineSample operator |(CommandLineSample leftCommand, CommandLineSample rightCommand)
     {
-        // создаем спецификацию для проверки совместимости вызова XOR
+        // СЃРѕР·РґР°РµРј СЃРїРµС†РёС„РёРєР°С†РёСЋ РґР»СЏ РїСЂРѕРІРµСЂРєРё СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё РІС‹Р·РѕРІР° XOR
         SpecificationCommandLineOr ss = new SpecificationCommandLineOr(leftCommand, rightCommand);
         CommandLineService.ListSpecificationCommandLine.Add(ss);        
         return leftCommand; // rigthCommand;
     }
 
     /// <summary>
-    /// Создаем спецификацию OR совместимости экземпляров шаблонов, 
-    /// который соответствует критериям указываемых при составлении шаблона. 
+    /// РЎРѕР·РґР°РµРј СЃРїРµС†РёС„РёРєР°С†РёСЋ OR СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё СЌРєР·РµРјРїР»СЏСЂРѕРІ С€Р°Р±Р»РѕРЅРѕРІ, 
+    /// РєРѕС‚РѕСЂС‹Р№ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ РєСЂРёС‚РµСЂРёСЏРј СѓРєР°Р·С‹РІР°РµРјС‹С… РїСЂРё СЃРѕСЃС‚Р°РІР»РµРЅРёРё С€Р°Р±Р»РѕРЅР°. 
     /// </summary>
     /// <param name="leftCommand"></param>
     /// <param name="rigthCommand"></param>
     /// <returns></returns>
     public static CommandLineSample operator ^ (CommandLineSample leftCommand, CommandLineSample rightCommand)
     {
-        // создаем спецификацию для проверки совместимости вызова XOR
+        // СЃРѕР·РґР°РµРј СЃРїРµС†РёС„РёРєР°С†РёСЋ РґР»СЏ РїСЂРѕРІРµСЂРєРё СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё РІС‹Р·РѕРІР° XOR
         SpecificationCommandLineXor ss = new SpecificationCommandLineXor(leftCommand, rightCommand);
         CommandLineService.ListSpecificationCommandLine.Add(ss);
         return leftCommand; // rigthCommand;
     }
 
     /// <summary>
-    /// Создаем спецификация And совместимости экземпляров шаблонов, 
-    /// который соответствует критериям указываемых при составлении шаблона. 
+    /// РЎРѕР·РґР°РµРј СЃРїРµС†РёС„РёРєР°С†РёСЏ And СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё СЌРєР·РµРјРїР»СЏСЂРѕРІ С€Р°Р±Р»РѕРЅРѕРІ, 
+    /// РєРѕС‚РѕСЂС‹Р№ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ РєСЂРёС‚РµСЂРёСЏРј СѓРєР°Р·С‹РІР°РµРјС‹С… РїСЂРё СЃРѕСЃС‚Р°РІР»РµРЅРёРё С€Р°Р±Р»РѕРЅР°. 
     /// </summary>
     /// <param name="leftCommand"></param>
     /// <param name="rightCommand"></param>
     /// <returns></returns>
     public static CommandLineSample operator & (CommandLineSample leftCommand, CommandLineSample rightCommand)
     {
-        // создаем спецификацию для проверки совместимости вызова XOR
+        // СЃРѕР·РґР°РµРј СЃРїРµС†РёС„РёРєР°С†РёСЋ РґР»СЏ РїСЂРѕРІРµСЂРєРё СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё РІС‹Р·РѕРІР° XOR
         SpecificationCommandLineAnd ss = new SpecificationCommandLineAnd(leftCommand, rightCommand);
         CommandLineService.ListSpecificationCommandLine.Add(ss);
         return leftCommand; // rigthCommand;

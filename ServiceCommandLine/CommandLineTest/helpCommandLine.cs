@@ -9,28 +9,28 @@ using Patterns.SpecificationClassic;
 
 
     /// <summary>
-    /// Обработка командной строки Help.
+    /// РћР±СЂР°Р±РѕС‚РєР° РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё Help.
     /// </summary>
     public class helpCommandLine : CommandLineRun
-    {// Help командной строки 
+    {// Help РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё 
         /// <summary>
-        /// Имя комманды, спарвку по которой хотим получить
+        /// РРјСЏ РєРѕРјРјР°РЅРґС‹, СЃРїР°СЂРІРєСѓ РїРѕ РєРѕС‚РѕСЂРѕР№ С…РѕС‚РёРј РїРѕР»СѓС‡РёС‚СЊ
         /// </summary>
         public string CommandNameHelp { get; set; }
 
         public helpCommandLine()    { }
 
         /// <summary>
-        /// выполнить 
+        /// РІС‹РїРѕР»РЅРёС‚СЊ 
         /// </summary>
         public override void Run()
         {
             CommandLineSample cmdln = CommandLineService.cmdlines.FirstOrDefault((s => s.CommandName == this.CommandName));
             if ( cmdln != null)
-            { // совпала
+            { // СЃРѕРІРїР°Р»Р°
                 cmdln.Help();
             }   
-            else // неправильная команда help
+            else // РЅРµРїСЂР°РІРёР»СЊРЅР°СЏ РєРѕРјР°РЅРґР° help
             {
                 Console.WriteLine("Error calling program {0}.  command {1} does not exist ", AppName, this.CommandNameHelp);
                 RulesOfchallenge();
@@ -38,7 +38,7 @@ using Patterns.SpecificationClassic;
         }
 
         /// <summary>
-        /// правила вызова
+        /// РїСЂР°РІРёР»Р° РІС‹Р·РѕРІР°
         /// </summary>
         public override void RulesOfchallenge()
         { 

@@ -13,40 +13,40 @@ using Patterns.SpecificationClassic;
 //using UserServices.UserAttributedLib;
 
 /// <summary>
-/// Сервис разбора шаблона  командной строки: команд, опций, параметров. 
-/// Разбор конкретного вызова приложения из командной строки.
-/// Создаем спецификация совместимости экземпляров шаблонов, 
-/// который соответствует критериям совместимости, указываемых при составлении шаблона.
+/// РЎРµСЂРІРёСЃ СЂР°Р·Р±РѕСЂР° С€Р°Р±Р»РѕРЅР°  РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё: РєРѕРјР°РЅРґ, РѕРїС†РёР№, РїР°СЂР°РјРµС‚СЂРѕРІ. 
+/// Р Р°Р·Р±РѕСЂ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ РІС‹Р·РѕРІР° РїСЂРёР»РѕР¶РµРЅРёСЏ РёР· РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё.
+/// РЎРѕР·РґР°РµРј СЃРїРµС†РёС„РёРєР°С†РёСЏ СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё СЌРєР·РµРјРїР»СЏСЂРѕРІ С€Р°Р±Р»РѕРЅРѕРІ, 
+/// РєРѕС‚РѕСЂС‹Р№ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ РєСЂРёС‚РµСЂРёСЏРј СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё, СѓРєР°Р·С‹РІР°РµРјС‹С… РїСЂРё СЃРѕСЃС‚Р°РІР»РµРЅРёРё С€Р°Р±Р»РѕРЅР°.
 /// </summary>
 public static class CommandLineService //: INotifyDataErrorInfo
 {
     /// <summary>
-    ///  префекс параметра командной строки
+    ///  РїСЂРµС„РµРєСЃ РїР°СЂР°РјРµС‚СЂР° РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё
     /// </summary>
     public const char const_PREF = '-';
     public const char sleshBack = '\\';
     /// <summary>
-    ///  префекс команды командной строки
+    ///  РїСЂРµС„РµРєСЃ РєРѕРјР°РЅРґС‹ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё
     /// </summary>
     public const char slesh2 = '/';
     /// <summary>
-    /// разделитель значение параметра командной строки 
+    /// СЂР°Р·РґРµР»РёС‚РµР»СЊ Р·РЅР°С‡РµРЅРёРµ РїР°СЂР°РјРµС‚СЂР° РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё 
     /// </summary>
     public const char const_SPLIT = '='; //
 
     /// <summary>
-    /// Шаблоны вызова команд приложения
+    /// РЁР°Р±Р»РѕРЅС‹ РІС‹Р·РѕРІР° РєРѕРјР°РЅРґ РїСЂРёР»РѕР¶РµРЅРёСЏ
     /// </summary>
     public static List<CommandLineSample> cmdlines = new List<CommandLineSample>();
 
     /// <summary>
-    /// Список спецификаций вытекающих из правил записи шаблона командной строки.
+    /// РЎРїРёСЃРѕРє СЃРїРµС†РёС„РёРєР°С†РёР№ РІС‹С‚РµРєР°СЋС‰РёС… РёР· РїСЂР°РІРёР» Р·Р°РїРёСЃРё С€Р°Р±Р»РѕРЅР° РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё.
     /// </summary>
     public static List<SpecificationCommandLine<List<ICommandLineSample>>> ListSpecificationCommandLine = 
         new List<SpecificationCommandLine<List<ICommandLineSample>>>();
 
     /// <summary>
-    /// Создание команды вызова приложения из командной строки
+    /// РЎРѕР·РґР°РЅРёРµ РєРѕРјР°РЅРґС‹ РІС‹Р·РѕРІР° РїСЂРёР»РѕР¶РµРЅРёСЏ РёР· РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё
     /// </summary>
     /// <param name="name"></param>
     /// <returns></returns>
@@ -58,79 +58,79 @@ public static class CommandLineService //: INotifyDataErrorInfo
     }
 
     /// <summary>
-    ///  Разбор вызова. Разбор конкретного вызова приложения из командной строки.
-    ///  Выполнено с учетом нескольких команд в командной строке.
+    ///  Р Р°Р·Р±РѕСЂ РІС‹Р·РѕРІР°. Р Р°Р·Р±РѕСЂ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ РІС‹Р·РѕРІР° РїСЂРёР»РѕР¶РµРЅРёСЏ РёР· РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё.
+    ///  Р’С‹РїРѕР»РЅРµРЅРѕ СЃ СѓС‡РµС‚РѕРј РЅРµСЃРєРѕР»СЊРєРёС… РєРѕРјР°РЅРґ РІ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРµ.
     /// </summary>
     /// <param name="args"></param>
-    /// <param name="result">класс резуализущий работу команды, с которого начинаем</param>
-    /// <returns>Результат разбора</returns>
+    /// <param name="result">РєР»Р°СЃСЃ СЂРµР·СѓР°Р»РёР·СѓС‰РёР№ СЂР°Р±РѕС‚Сѓ РєРѕРјР°РЅРґС‹, СЃ РєРѕС‚РѕСЂРѕРіРѕ РЅР°С‡РёРЅР°РµРј</param>
+    /// <returns>Р РµР·СѓР»СЊС‚Р°С‚ СЂР°Р·Р±РѕСЂР°</returns>
     public static bool ParseCommandLine(string[] args) //, out ICommandLineRun result)
     {
         bool rc = false;
         //result = null;        
-        for (int ind = 0; ind < args.Length; ind++)// разбор всех аргументов
+        for (int ind = 0; ind < args.Length; ind++)// СЂР°Р·Р±РѕСЂ РІСЃРµС… Р°СЂРіСѓРјРµРЅС‚РѕРІ
         {
             Dictionary<string, string> properties = new Dictionary<string, string>();
             List<string> Parameters = new List<string>();
             CommandLineSample @this = null;
             if (args[ind].StartsWith(slesh2)) 
-            {// команда
-                args[ind] = args[ind].Substring(1); // имя команды
+            {// РєРѕРјР°РЅРґР°
+                args[ind] = args[ind].Substring(1); // РёРјСЏ РєРѕРјР°РЅРґС‹
                 @this = cmdlines.FirstOrDefault((s => s.CommandName == args[ind]));
 
-                if (@this == null)  // не наша команда
-                { //  TODO фиксируем ошибку в командной строке
+                if (@this == null)  // РЅРµ РЅР°С€Р° РєРѕРјР°РЅРґР°
+                { //  TODO С„РёРєСЃРёСЂСѓРµРј РѕС€РёР±РєСѓ РІ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРµ
                     continue;
                 }
                 //ICommandLineRun resultLast = null;
-                ind++; // след. аргумент
+                ind++; // СЃР»РµРґ. Р°СЂРіСѓРјРµРЅС‚
                 //int ParameterIndex = 0;
                 bool IsParameter = false; //
 
-                while( ind < args.Length) // разбор опций и параметров для команды
+                while( ind < args.Length) // СЂР°Р·Р±РѕСЂ РѕРїС†РёР№ Рё РїР°СЂР°РјРµС‚СЂРѕРІ РґР»СЏ РєРѕРјР°РЅРґС‹
                 {
-                    if (args[ind].StartsWith(const_PREF)) // префикс
-                    { // опция
-                        string parameterWithoutHyphen = args[ind].Substring(1); //без разделителя
-                                                                                // разделитель значение параметра командной строки 
-                                                                                // возможен неправильный вызов
-                        string[] nameValue = args[ind].Substring(1).Split(const_SPLIT); // разделитель значение параметра командной строки 
+                    if (args[ind].StartsWith(const_PREF)) // РїСЂРµС„РёРєСЃ
+                    { // РѕРїС†РёСЏ
+                        string parameterWithoutHyphen = args[ind].Substring(1); //Р±РµР· СЂР°Р·РґРµР»РёС‚РµР»СЏ
+                                                                                // СЂР°Р·РґРµР»РёС‚РµР»СЊ Р·РЅР°С‡РµРЅРёРµ РїР°СЂР°РјРµС‚СЂР° РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё 
+                                                                                // РІРѕР·РјРѕР¶РµРЅ РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ РІС‹Р·РѕРІ
+                        string[] nameValue = args[ind].Substring(1).Split(const_SPLIT); // СЂР°Р·РґРµР»РёС‚РµР»СЊ Р·РЅР°С‡РµРЅРёРµ РїР°СЂР°РјРµС‚СЂР° РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё 
                         if (nameValue.Length == 0)
-                        { // неправильный вызов
+                        { // РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ РІС‹Р·РѕРІ
                             break; //??? return rc;
                         }
                         string ValueOpt;
                         switch (nameValue.Length)
                         {
-                            case 1: // возможно неправильный вызов
+                            case 1: // РІРѕР·РјРѕР¶РЅРѕ РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ РІС‹Р·РѕРІ
                                 ValueOpt = null;
                                 break;
-                            case 2:  // сейчас правильный вызов
+                            case 2:  // СЃРµР№С‡Р°СЃ РїСЂР°РІРёР»СЊРЅС‹Р№ РІС‹Р·РѕРІ
                                 ValueOpt = nameValue[1];
                                 break;
-                            default:  // сейчас неправильный вызов. но берем только 2
+                            default:  // СЃРµР№С‡Р°СЃ РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ РІС‹Р·РѕРІ. РЅРѕ Р±РµСЂРµРј С‚РѕР»СЊРєРѕ 2
                                 ValueOpt = nameValue[1];
                                 break;
                         }
                         properties.Add(nameValue[0], ValueOpt);
-                        ind++; // след. аргумент
+                        ind++; // СЃР»РµРґ. Р°СЂРіСѓРјРµРЅС‚
                     }
                     else if (args[ind].StartsWith(slesh2))
-                    { // Еще команда.  
-                        break; // прервем. Обработаем в цикле for
+                    { // Р•С‰Рµ РєРѕРјР°РЅРґР°.  
+                        break; // РїСЂРµСЂРІРµРј. РћР±СЂР°Р±РѕС‚Р°РµРј РІ С†РёРєР»Рµ for
                     }
                     else
-                    { // параметрический вызов. Вообще Позиционный вызов. В тесте только для Help
-                        //if (!IsParameter) { // пока допускаем 1 параметр
+                    { // РїР°СЂР°РјРµС‚СЂРёС‡РµСЃРєРёР№ РІС‹Р·РѕРІ. Р’РѕРѕР±С‰Рµ РџРѕР·РёС†РёРѕРЅРЅС‹Р№ РІС‹Р·РѕРІ. Р’ С‚РµСЃС‚Рµ С‚РѕР»СЊРєРѕ РґР»СЏ Help
+                        //if (!IsParameter) { // РїРѕРєР° РґРѕРїСѓСЃРєР°РµРј 1 РїР°СЂР°РјРµС‚СЂ
                         IsParameter = true;
                         Parameters.Add(args[ind]);
-                        ind++; // след. аргумент
-                        break; // следующая команда
+                        ind++; // СЃР»РµРґ. Р°СЂРіСѓРјРµРЅС‚
+                        break; // СЃР»РµРґСѓСЋС‰Р°СЏ РєРѕРјР°РЅРґР°
                     }
                 }
-                // TODO проверим на совместимость
-                // продолжаем разбор в команде(CommandLineSample). Создаем исполняющий класс
-                rc = @this.ParseCommandLine(properties, Parameters);//Создали исполняющий класс
+                // TODO РїСЂРѕРІРµСЂРёРј РЅР° СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚СЊ
+                // РїСЂРѕРґРѕР»Р¶Р°РµРј СЂР°Р·Р±РѕСЂ РІ РєРѕРјР°РЅРґРµ(CommandLineSample). РЎРѕР·РґР°РµРј РёСЃРїРѕР»РЅСЏСЋС‰РёР№ РєР»Р°СЃСЃ
+                rc = @this.ParseCommandLine(properties, Parameters);//РЎРѕР·РґР°Р»Рё РёСЃРїРѕР»РЅСЏСЋС‰РёР№ РєР»Р°СЃСЃ
                 properties.Clear();
                 Parameters.Clear();
             }
@@ -139,9 +139,9 @@ public static class CommandLineService //: INotifyDataErrorInfo
     }
 
     /// <summary>
-    /// Вызов логики приложения заявленных для выполнения команд 
-    /// удовлетворяющих условия начала работы по спецификациям совместимости 
-    /// экземпляров команд, соответствие критериям совместимости, указываемых при составлении шаблона
+    /// Р’С‹Р·РѕРІ Р»РѕРіРёРєРё РїСЂРёР»РѕР¶РµРЅРёСЏ Р·Р°СЏРІР»РµРЅРЅС‹С… РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РєРѕРјР°РЅРґ 
+    /// СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‰РёС… СѓСЃР»РѕРІРёСЏ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ РїРѕ СЃРїРµС†РёС„РёРєР°С†РёСЏРј СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё 
+    /// СЌРєР·РµРјРїР»СЏСЂРѕРІ РєРѕРјР°РЅРґ, СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРµ РєСЂРёС‚РµСЂРёСЏРј СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё, СѓРєР°Р·С‹РІР°РµРјС‹С… РїСЂРё СЃРѕСЃС‚Р°РІР»РµРЅРёРё С€Р°Р±Р»РѕРЅР°
     /// </summary>
     public static void Run() { // ???
         var cmdRun = CommandLineService.cmdlines.Where((cm1) => 
@@ -150,7 +150,7 @@ public static class CommandLineService //: INotifyDataErrorInfo
              cmdrun?.Run();
     }
     /// <summary>
-    /// правила вызова приложения 
+    /// РїСЂР°РІРёР»Р° РІС‹Р·РѕРІР° РїСЂРёР»РѕР¶РµРЅРёСЏ 
     /// </summary>
     public static void RulesOfchallenge() 
     {
@@ -162,7 +162,7 @@ public static class CommandLineService //: INotifyDataErrorInfo
     }
 
     /// <summary>
-    /// правила вызова приложения 
+    /// РїСЂР°РІРёР»Р° РІС‹Р·РѕРІР° РїСЂРёР»РѕР¶РµРЅРёСЏ 
     /// </summary>
     public static void Help()
     {
@@ -176,50 +176,50 @@ public static class CommandLineService //: INotifyDataErrorInfo
     {
         string AppName = Environment.GetCommandLineArgs()[0];
         AppName = Path.GetFileName(AppName);
-        // в части парсинга
+        // РІ С‡Р°СЃС‚Рё РїР°СЂСЃРёРЅРіР°
         Console.WriteLine("Error calling program {0}.", AppName);
         Console.WriteLine("The syntax for help: {0} /help CommandName", AppName);
     }
 
     /// <summary>
-    /// Удовлетворяются ли условия начала работы класса
-    /// Проверяем по спецификациям совместимости экземпляров команд, 
-    /// соответствие критериям совместимости, указываемых при составлении шаблона.
+    /// РЈРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‚СЃСЏ Р»Рё СѓСЃР»РѕРІРёСЏ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ РєР»Р°СЃСЃР°
+    /// РџСЂРѕРІРµСЂСЏРµРј РїРѕ СЃРїРµС†РёС„РёРєР°С†РёСЏРј СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё СЌРєР·РµРјРїР»СЏСЂРѕРІ РєРѕРјР°РЅРґ, 
+    /// СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРµ РєСЂРёС‚РµСЂРёСЏРј СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё, СѓРєР°Р·С‹РІР°РµРјС‹С… РїСЂРё СЃРѕСЃС‚Р°РІР»РµРЅРёРё С€Р°Р±Р»РѕРЅР°.
     /// </summary>
-    /// <returns>True - условия начала работы класса удовлетворены</returns>
+    /// <returns>True - СѓСЃР»РѕРІРёСЏ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ РєР»Р°СЃСЃР° СѓРґРѕРІР»РµС‚РІРѕСЂРµРЅС‹</returns>
     public static bool IsSatisfiedByService()
     {
         bool rc = true;
-        // формируем список заявленных для выполнения команд
+        // С„РѕСЂРјРёСЂСѓРµРј СЃРїРёСЃРѕРє Р·Р°СЏРІР»РµРЅРЅС‹С… РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РєРѕРјР°РЅРґ
         List<ICommandLineSample> cmds = CommandLineService.cmdlines.Where(
             cm1 => (cm1.IscommandClass & cm1.CommandLineOK)).
             Select(cm2=>(ICommandLineSample)cm2).ToList(); //&& cm1.CommandLineOk
                                              
         //CommandLineService.ListSpecificationCommandLine.IsSatisfiedBy(cmd);
         foreach (SpecificationCommandLine<List<ICommandLineSample>> sp in ListSpecificationCommandLine)
-            if (!sp.IsSatisfiedBy(cmds)) // не прошла проверка
+            if (!sp.IsSatisfiedBy(cmds)) // РЅРµ РїСЂРѕС€Р»Р° РїСЂРѕРІРµСЂРєР°
             {
                 _errors.Add( sp.ToString() , sp.GetError());
                 rc = false;
             }
 
-        // выполним проверки опций и параметров
+        // РІС‹РїРѕР»РЅРёРј РїСЂРѕРІРµСЂРєРё РѕРїС†РёР№ Рё РїР°СЂР°РјРµС‚СЂРѕРІ
         foreach (CommandLineSample cmd in cmds)
         {
-            if (!cmd.IsSatisfiedBy()) // не прошла проверка
+            if (!cmd.IsSatisfiedBy()) // РЅРµ РїСЂРѕС€Р»Р° РїСЂРѕРІРµСЂРєР°
                 rc = false;
         }
 
-        //cmds.Select(c => c.IsSatisfiedBy() ); отложенное выполнение
+        //cmds.Select(c => c.IsSatisfiedBy() ); РѕС‚Р»РѕР¶РµРЅРЅРѕРµ РІС‹РїРѕР»РЅРµРЅРёРµ
         return rc;
     }
 
     /// <summary>
-    /// Устанавливаем зн-ние свойству созданого объекта ICommandLineRun
+    /// РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј Р·РЅ-РЅРёРµ СЃРІРѕР№СЃС‚РІСѓ СЃРѕР·РґР°РЅРѕРіРѕ РѕР±СЉРµРєС‚Р° ICommandLineRun
     /// </summary>
-    /// <param name="pp"> Св-во которому устанавливаем зн-ние</param>
-    /// <param name="ObjectImp">объект, который заполняем</param>
-    /// <param name="st2">устанавливаемое зн-ние</param>
+    /// <param name="pp"> РЎРІ-РІРѕ РєРѕС‚РѕСЂРѕРјСѓ СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј Р·РЅ-РЅРёРµ</param>
+    /// <param name="ObjectImp">РѕР±СЉРµРєС‚, РєРѕС‚РѕСЂС‹Р№ Р·Р°РїРѕР»РЅСЏРµРј</param>
+    /// <param name="st2">СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРјРѕРµ Р·РЅ-РЅРёРµ</param>
     static public void SetValue<ICommandLineRun>(PropertyInfo pp, ICommandLineRun ObjectImp,
         string st2, out string error)
     {
@@ -237,43 +237,43 @@ public static class CommandLineService //: INotifyDataErrorInfo
                 if (int.TryParse(st2, out int iRes))
                     pp.SetValue(ObjectImp, iRes);
                 else //
-                    error = "Неправильный формат данных.";
+                    error = "РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ С„РѕСЂРјР°С‚ РґР°РЅРЅС‹С….";
             }
             else if (typrFld == Type.GetType("double"))
             {
                 if (double.TryParse(st2, out double dRes))
                     pp.SetValue(ObjectImp, dRes);
                 else //
-                    error = "Неправильный формат данных.";
+                    error = "РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ С„РѕСЂРјР°С‚ РґР°РЅРЅС‹С….";
             }
             else if (typrFld == Type.GetType("bool"))
             {
                 if (bool.TryParse(st2, out bool bRes))
                     pp.SetValue(ObjectImp, bRes);
                 else //
-                    error = "Неправильный формат данных.";
+                    error = "РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ С„РѕСЂРјР°С‚ РґР°РЅРЅС‹С….";
             }
             else // 
-                error = "Неподдерживаемый формат данных.";
+                error = "РќРµРїРѕРґРґРµСЂР¶РёРІР°РµРјС‹Р№ С„РѕСЂРјР°С‚ РґР°РЅРЅС‹С….";
         }
         catch (System.ArgumentException exp)
-        // Не найден метод доступа set свойства. -или- value невозможно преобразовать в
-        // тип System.Reflection.PropertyInfo.PropertyType.
+        // РќРµ РЅР°Р№РґРµРЅ РјРµС‚РѕРґ РґРѕСЃС‚СѓРїР° set СЃРІРѕР№СЃС‚РІР°. -РёР»Рё- value РЅРµРІРѕР·РјРѕР¶РЅРѕ РїСЂРµРѕР±СЂР°Р·РѕРІР°С‚СЊ РІ
+        // С‚РёРї System.Reflection.PropertyInfo.PropertyType.
         {
             error = exp.Message;
         }
         catch (System.Reflection.TargetException exp)
-        //  Тип obj не соответствует целевому типу, или свойство является свойством экземпляра, но obj равен null.
+        //  РўРёРї obj РЅРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ С†РµР»РµРІРѕРјСѓ С‚РёРїСѓ, РёР»Рё СЃРІРѕР№СЃС‚РІРѕ СЏРІР»СЏРµС‚СЃСЏ СЃРІРѕР№СЃС‚РІРѕРј СЌРєР·РµРјРїР»СЏСЂР°, РЅРѕ obj СЂР°РІРµРЅ null.
         {
             error = exp.Message;
         }
         catch (System.MethodAccessException exp)
-        //     Возникла недопустимая попытка доступа к частному или защищенному методу внутри  класса.
+        //     Р’РѕР·РЅРёРєР»Р° РЅРµРґРѕРїСѓСЃС‚РёРјР°СЏ РїРѕРїС‹С‚РєР° РґРѕСЃС‚СѓРїР° Рє С‡Р°СЃС‚РЅРѕРјСѓ РёР»Рё Р·Р°С‰РёС‰РµРЅРЅРѕРјСѓ РјРµС‚РѕРґСѓ РІРЅСѓС‚СЂРё  РєР»Р°СЃСЃР°.
         {
             error = exp.Message;
         }
         catch (System.Reflection.TargetInvocationException exp)
-        //     Ошибка при установке значения свойства.
+        //     РћС€РёР±РєР° РїСЂРё СѓСЃС‚Р°РЅРѕРІРєРµ Р·РЅР°С‡РµРЅРёСЏ СЃРІРѕР№СЃС‚РІР°.
         {
             error = exp.Message;
         }
@@ -282,28 +282,28 @@ public static class CommandLineService //: INotifyDataErrorInfo
 
     #region INotifyDataErrorInfo
     /// <summary>
-    /// ошибки проверки для всего CommandLineRun.
-    /// указанное свойствщ, список ошибок
+    /// РѕС€РёР±РєРё РїСЂРѕРІРµСЂРєРё РґР»СЏ РІСЃРµРіРѕ CommandLineRun.
+    /// СѓРєР°Р·Р°РЅРЅРѕРµ СЃРІРѕР№СЃС‚РІС‰, СЃРїРёСЃРѕРє РѕС€РёР±РѕРє
     /// </summary>
     static readonly Dictionary<string, string> _errors = new Dictionary<string, string>();
     /// <summary>
-    /// ошибки проверки для всего CommandLineRun.
-    /// указанное свойство, список ошибок
+    /// РѕС€РёР±РєРё РїСЂРѕРІРµСЂРєРё РґР»СЏ РІСЃРµРіРѕ CommandLineRun.
+    /// СѓРєР°Р·Р°РЅРЅРѕРµ СЃРІРѕР№СЃС‚РІРѕ, СЃРїРёСЃРѕРє РѕС€РёР±РѕРє
     /// </summary>
     public static Dictionary<string, string> Errors => _errors;
     /// <summary>
-    /// имеет ли сущность ошибки проверки.
+    /// РёРјРµРµС‚ Р»Рё СЃСѓС‰РЅРѕСЃС‚СЊ РѕС€РёР±РєРё РїСЂРѕРІРµСЂРєРё.
     /// </summary>
     public static bool HasErrors => _errors.Count > 0;
 
     /// <summary>
-    /// ошибки проверки для указанного свойства или для всей сущности
+    /// РѕС€РёР±РєРё РїСЂРѕРІРµСЂРєРё РґР»СЏ СѓРєР°Р·Р°РЅРЅРѕРіРѕ СЃРІРѕР№СЃС‚РІР° РёР»Рё РґР»СЏ РІСЃРµР№ СЃСѓС‰РЅРѕСЃС‚Рё
     /// </summary>
     /// <param name="propName"></param>
     /// <returns></returns>
     public static Dictionary<string, string> GetErrors() => _errors;
     /// <summary>
-    /// ошибки проверки для указанного свойства или для всей сущности
+    /// РѕС€РёР±РєРё РїСЂРѕРІРµСЂРєРё РґР»СЏ СѓРєР°Р·Р°РЅРЅРѕРіРѕ СЃРІРѕР№СЃС‚РІР° РёР»Рё РґР»СЏ РІСЃРµР№ СЃСѓС‰РЅРѕСЃС‚Рё
     /// </summary>
     /// <param name="propName"></param>
     /// <returns></returns>
@@ -322,10 +322,10 @@ public static class CommandLineService //: INotifyDataErrorInfo
     }
 
     /// <summary>
-    /// Добавить ошибку для свойства
+    /// Р”РѕР±Р°РІРёС‚СЊ РѕС€РёР±РєСѓ РґР»СЏ СЃРІРѕР№СЃС‚РІР°
     /// </summary>
-    /// <param name="propName">Имя свойства.</param>
-    /// <param name="error">Выявленная ошибка.</param>
+    /// <param name="propName">РРјСЏ СЃРІРѕР№СЃС‚РІР°.</param>
+    /// <param name="error">Р’С‹СЏРІР»РµРЅРЅР°СЏ РѕС€РёР±РєР°.</param>
     public static void AddError(string propName, string error)
     {
         _errors.Add(propName,  error);

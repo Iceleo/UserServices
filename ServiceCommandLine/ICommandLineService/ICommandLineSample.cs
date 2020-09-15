@@ -4,21 +4,21 @@ using System.Collections.Generic;
 public interface ICommandLineSample : ICommandLine
  {
     /// <summary>
-    /// Разбор вызова
+    /// Р Р°Р·Р±РѕСЂ РІС‹Р·РѕРІР°
     /// </summary>
-    /// <param name="properties">Свойства комманды</param>
-    /// <param name="ParametersCmd">Параметры комманды</param>
-    /// <returns>Результат разбора</returns>
+    /// <param name="properties">РЎРІРѕР№СЃС‚РІР° РєРѕРјРјР°РЅРґС‹</param>
+    /// <param name="ParametersCmd">РџР°СЂР°РјРµС‚СЂС‹ РєРѕРјРјР°РЅРґС‹</param>
+    /// <returns>Р РµР·СѓР»СЊС‚Р°С‚ СЂР°Р·Р±РѕСЂР°</returns>
     bool ParseCommandLine(Dictionary<string, string> properties,
             List<string> ParametersCmd);
     /// <summary>
-    /// Удовлетворяются ли условия начала работы класса
+    /// РЈРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‚СЃСЏ Р»Рё СѓСЃР»РѕРІРёСЏ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ РєР»Р°СЃСЃР°
     /// </summary>
-    /// <returns>True - условия начала работы класса удовлетворены</returns>
+    /// <returns>True - СѓСЃР»РѕРІРёСЏ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ РєР»Р°СЃСЃР° СѓРґРѕРІР»РµС‚РІРѕСЂРµРЅС‹</returns>
     bool IsSatisfiedBy();
 
     /// <summary>
-    /// Установить - условия начала работы класса не выполнимы.
+    /// РЈСЃС‚Р°РЅРѕРІРёС‚СЊ - СѓСЃР»РѕРІРёСЏ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ РєР»Р°СЃСЃР° РЅРµ РІС‹РїРѕР»РЅРёРјС‹.
     /// </summary>
     void SetCommandLineBad();
 

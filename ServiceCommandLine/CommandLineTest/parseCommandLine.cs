@@ -13,75 +13,75 @@ using Patterns.SpecificationClassic;
 
 
     /// <summary>
-    /// Класс работы консольного приложения. 
-    /// Обработка командной строки.
-    /// Обработка данных из конфигурационного файла 
+    /// РљР»Р°СЃСЃ СЂР°Р±РѕС‚С‹ РєРѕРЅСЃРѕР»СЊРЅРѕРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ. 
+    /// РћР±СЂР°Р±РѕС‚РєР° РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё.
+    /// РћР±СЂР°Р±РѕС‚РєР° РґР°РЅРЅС‹С… РёР· РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅРѕРіРѕ С„Р°Р№Р»Р° 
     /// </summary>
     [Serializable, XmlRoot(Namespace = "http://www.MyCompany.com")]
     public class parseCommandLine : CommandLineRun
     {
-        // В командной строке  " .. parse 
-        //            public string Variant { get; set; }          // если  углублять логику
+        // Р’ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРµ  " .. parse 
+        //            public string Variant { get; set; }          // РµСЃР»Рё  СѓРіР»СѓР±Р»СЏС‚СЊ Р»РѕРіРёРєСѓ
 
         /// <summary>
         /// 
         /// </summary>
         private static parseCommandLine _parseCommand;
-        public static parseCommandLine CountCommand { get { return _parseCommand; } } // Объект для доступа
+        public static parseCommandLine CountCommand { get { return _parseCommand; } } // РћР±СЉРµРєС‚ РґР»СЏ РґРѕСЃС‚СѓРїР°
 
         [XmlAttribute]
         public override string CommandName { get; set; }
         [XmlAttribute]
-        public override string AppName { get; set; }// имя приложения 
+        public override string AppName { get; set; }// РёРјСЏ РїСЂРёР»РѕР¶РµРЅРёСЏ 
 
         /// <summary>
-        /// команда parse
+        /// РєРѕРјР°РЅРґР° parse
         /// </summary>
         public bool ParseCommand { get; set; }
         [XmlAttribute]
         [SpecificationCommandLineAttribute ("1", "pathconfig")]
-        public string pathconfig { get; set; }  //Путь к конфигурационному файлу
+        public string pathconfig { get; set; }  //РџСѓС‚СЊ Рє РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅРѕРјСѓ С„Р°Р№Р»Сѓ
         [XmlAttribute]
-        public string pathbase { get; set; }    //Путь к корневой папке проекта
+        public string pathbase { get; set; }    //РџСѓС‚СЊ Рє РєРѕСЂРЅРµРІРѕР№ РїР°РїРєРµ РїСЂРѕРµРєС‚Р°
         [XmlAttribute]
-        public string targethost { get; set; }  //Целевой домен
+        public string targethost { get; set; }  //Р¦РµР»РµРІРѕР№ РґРѕРјРµРЅ
 
-        // восстанавление/сохраненние данных из/в файла.
+        // РІРѕСЃСЃС‚Р°РЅР°РІР»РµРЅРёРµ/СЃРѕС…СЂР°РЅРµРЅРЅРёРµ РґР°РЅРЅС‹С… РёР·/РІ С„Р°Р№Р»Р°.
         /// <summary>
-        /// Параметр Load Serialize data
+        /// РџР°СЂР°РјРµС‚СЂ Load Serialize data
         /// </summary>
         public bool LoadData { get; set; } = false;
         /// <summary>
-        /// Параметр Save Serialize data
+        /// РџР°СЂР°РјРµС‚СЂ Save Serialize data
         /// </summary
         public bool SaveData { get; set; } = false;
         public string FileSerialize { get; set; }
 
-        // из конфигурации
+        // РёР· РєРѕРЅС„РёРіСѓСЂР°С†РёРё
         [XmlAttribute]
-        protected string strproject;       // {project} - корневая директория проекта 
+        protected string strproject;       // {project} - РєРѕСЂРЅРµРІР°СЏ РґРёСЂРµРєС‚РѕСЂРёСЏ РїСЂРѕРµРєС‚Р° 
         [XmlAttribute]
-        protected string strhtml_files;    // {html_files} - директория расположения HTML страниц
+        protected string strhtml_files;    // {html_files} - РґРёСЂРµРєС‚РѕСЂРёСЏ СЂР°СЃРїРѕР»РѕР¶РµРЅРёСЏ HTML СЃС‚СЂР°РЅРёС†
         [XmlAttribute]
-        protected string strstatic_files;  // {static_files} - директория расположения статичных ресурсов
+        protected string strstatic_files;  // {static_files} - РґРёСЂРµРєС‚РѕСЂРёСЏ СЂР°СЃРїРѕР»РѕР¶РµРЅРёСЏ СЃС‚Р°С‚РёС‡РЅС‹С… СЂРµСЃСѓСЂСЃРѕРІ
         [XmlAttribute]
-        protected int depthtransitions;   // depthtransitions Глубина переходов на внутренние страницы  
-        protected string _shemas;  // Схема подключения к сайту 
+        protected int depthtransitions;   // depthtransitions Р“Р»СѓР±РёРЅР° РїРµСЂРµС…РѕРґРѕРІ РЅР° РІРЅСѓС‚СЂРµРЅРЅРёРµ СЃС‚СЂР°РЅРёС†С‹  
+        protected string _shemas;  // РЎС…РµРјР° РїРѕРґРєР»СЋС‡РµРЅРёСЏ Рє СЃР°Р№С‚Сѓ 
         /// <summary>
-        ///  Глубина переходов на внутренние страницы.  depthtransitions
+        ///  Р“Р»СѓР±РёРЅР° РїРµСЂРµС…РѕРґРѕРІ РЅР° РІРЅСѓС‚СЂРµРЅРЅРёРµ СЃС‚СЂР°РЅРёС†С‹.  depthtransitions
         /// </summary>
         public int Depthtransitions { get { return depthtransitions; } } //
         /// <summary>
-        /// логин пользователя для целевого домена. Из конфигурации.
+        /// Р»РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РґР»СЏ С†РµР»РµРІРѕРіРѕ РґРѕРјРµРЅР°. РР· РєРѕРЅС„РёРіСѓСЂР°С†РёРё.
         /// </summary>
-        protected string _loginhost;            // логин пользователя для целевого домена
+        protected string _loginhost;            // Р»РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РґР»СЏ С†РµР»РµРІРѕРіРѕ РґРѕРјРµРЅР°
         /// <summary>
-        /// пароль пользователя для целевого домена. Из конфигурации.
+        /// РїР°СЂРѕР»СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РґР»СЏ С†РµР»РµРІРѕРіРѕ РґРѕРјРµРЅР°. РР· РєРѕРЅС„РёРіСѓСЂР°С†РёРё.
         /// </summary>
         protected string _passwhost;
         //[NonSerialized]
-        //        public static Logger          logger     { get { return _logger;   }}     // логер
-        //        private static Logger _logger; // логер
+        //        public static Logger          logger     { get { return _logger;   }}     // Р»РѕРіРµСЂ
+        //        private static Logger _logger; // Р»РѕРіРµСЂ
         public parseCommandLine()
         {
             _parseCommand = this;
@@ -89,70 +89,70 @@ using Patterns.SpecificationClassic;
 
 
         /// <summary>
-        /// выполнить 
+        /// РІС‹РїРѕР»РЅРёС‚СЊ 
         /// </summary>
         public override void Run()
         {
-            Console.WriteLine($"{AppName} вызов команды /parse -pathbase={pathbase}  -pathconfig={pathconfig} -targethost={targethost} .");
+            Console.WriteLine($"{AppName} РІС‹Р·РѕРІ РєРѕРјР°РЅРґС‹ /parse -pathbase={pathbase}  -pathconfig={pathconfig} -targethost={targethost} .");
         }
 
         /// <summary>
-        /// справка
+        /// СЃРїСЂР°РІРєР°
         /// </summary>
         public override void Help()
         {
-            // в режиме Console
+            // РІ СЂРµР¶РёРјРµ Console
             RulesOfchallenge();
         }
         /// <summary>
-        /// правила вызова
+        /// РїСЂР°РІРёР»Р° РІС‹Р·РѕРІР°
         /// </summary>
         public override void RulesOfchallenge()
         {
-            //Console.WriteLine(" Синтаксис вызова команды parse :");
+            //Console.WriteLine(" РЎРёРЅС‚Р°РєСЃРёСЃ РІС‹Р·РѕРІР° РєРѕРјР°РЅРґС‹ parse :");
             //Console.WriteLine("The syntax for calling parse command:");
             Console.WriteLine($"{AppName} /parse -pathbase=pathprogram  -pathconfig=pathlocal -targethost=host ");
-            Console.WriteLine("Например, {0} с командой parse можно запустить: ", AppName);
+            Console.WriteLine("РќР°РїСЂРёРјРµСЂ, {0} СЃ РєРѕРјР°РЅРґРѕР№ parse РјРѕР¶РЅРѕ Р·Р°РїСѓСЃС‚РёС‚СЊ: ", AppName);
             Console.WriteLine(AppName,
                @" /parse -pathbase=C:\work\my_exe\ -pathconfig=C:\work\my_parse\ -targethost=en.wikipedia.org");
-            Console.WriteLine("Параметры  -pathconfig, -targethost должны быть реально существующими.");
-            Console.WriteLine("Директория у -pathbase при отсуствии создается, если путь правильный.");
+            Console.WriteLine("РџР°СЂР°РјРµС‚СЂС‹  -pathconfig, -targethost РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ СЂРµР°Р»СЊРЅРѕ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёРјРё.");
+            Console.WriteLine("Р”РёСЂРµРєС‚РѕСЂРёСЏ Сѓ -pathbase РїСЂРё РѕС‚СЃСѓСЃС‚РІРёРё СЃРѕР·РґР°РµС‚СЃСЏ, РµСЃР»Рё РїСѓС‚СЊ РїСЂР°РІРёР»СЊРЅС‹Р№.");
         }
 
         /// <summary>
-        /// Удовлетворяются ли условия начала работы класса
+        /// РЈРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‚СЃСЏ Р»Рё СѓСЃР»РѕРІРёСЏ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ РєР»Р°СЃСЃР°
         /// </summary>
-        /// <returns>True - условия начала работы класса удовлетворены</returns>
+        /// <returns>True - СѓСЃР»РѕРІРёСЏ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ РєР»Р°СЃСЃР° СѓРґРѕРІР»РµС‚РІРѕСЂРµРЅС‹</returns>
         public virtual bool Initial()
         {
             bool rc = true;
             return rc;
         }
         /// <summary>
-        /// Описываем главную спецификацию проверки свойств класса
+        /// РћРїРёСЃС‹РІР°РµРј РіР»Р°РІРЅСѓСЋ СЃРїРµС†РёС„РёРєР°С†РёСЋ РїСЂРѕРІРµСЂРєРё СЃРІРѕР№СЃС‚РІ РєР»Р°СЃСЃР°
         /// </summary>
         protected override void BuildMainSpecification()
         {
-            this.ClearErrors(); // очистим список
-            // формируем итоговою спецификаций для проверки
+            this.ClearErrors(); // РѕС‡РёСЃС‚РёРј СЃРїРёСЃРѕРє
+            // С„РѕСЂРјРёСЂСѓРµРј РёС‚РѕРіРѕРІРѕСЋ СЃРїРµС†РёС„РёРєР°С†РёР№ РґР»СЏ РїСЂРѕРІРµСЂРєРё
             string nameProp = nameof(pathconfig);
             SpecificationClassic<ICommandLineRun> pathconfigSp = (SpecificationClassic<ICommandLineRun>)  
-              (new SpecificationFromAnnotations(nameProp)). //Проверки на основе аннотаций данных
-                    And( new SpecificationDirectoryExist(nameProp));//Проверка существования директории
+              (new SpecificationFromAnnotations(nameProp)). //РџСЂРѕРІРµСЂРєРё РЅР° РѕСЃРЅРѕРІРµ Р°РЅРЅРѕС‚Р°С†РёР№ РґР°РЅРЅС‹С…
+                    And( new SpecificationDirectoryExist(nameProp));//РџСЂРѕРІРµСЂРєР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёСЏ РґРёСЂРµРєС‚РѕСЂРёРё
             nameProp = nameof(pathbase);
             SpecificationClassic<ICommandLineRun> pathbaseSp = (SpecificationClassic<ICommandLineRun>)
-              (new SpecificationFromAnnotations(nameProp)).//Проверки на основе аннотаций данных
-                    And(new SpecificationDirectoryExist(nameProp));//Проверка существования директории
+              (new SpecificationFromAnnotations(nameProp)).//РџСЂРѕРІРµСЂРєРё РЅР° РѕСЃРЅРѕРІРµ Р°РЅРЅРѕС‚Р°С†РёР№ РґР°РЅРЅС‹С…
+                    And(new SpecificationDirectoryExist(nameProp));//РџСЂРѕРІРµСЂРєР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёСЏ РґРёСЂРµРєС‚РѕСЂРёРё
 
             //SpecificationClassic<ICommandLineRun> FileSerializeSp;
-            if (this.LoadData) //нужно загрузить из файла
+            if (this.LoadData) //РЅСѓР¶РЅРѕ Р·Р°РіСЂСѓР·РёС‚СЊ РёР· С„Р°Р№Р»Р°
             {
                 _mainSpecification = new SpecificationFileExist(nameof(FileSerialize));
             }
             else
             {
                 _mainSpecification = pathconfigSp.And(pathbaseSp);//
-                if (this.SaveData) //нужно сохранить
+                if (this.SaveData) //РЅСѓР¶РЅРѕ СЃРѕС…СЂР°РЅРёС‚СЊ
                 {
                     _mainSpecification = _mainSpecification.
                         And(new SpecificationFileExist(nameof(FileSerialize)));

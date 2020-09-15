@@ -13,17 +13,17 @@ public abstract partial class CommandLineRun : ICommandLineRun//, System.Compone
 {
     #region INotifyDataErrorInfo
         /// <summary>
-        /// ошибки проверки для всего CommandLineRun.
-        /// указанное свойствщ, список ошибок
+        /// РѕС€РёР±РєРё РїСЂРѕРІРµСЂРєРё РґР»СЏ РІСЃРµРіРѕ CommandLineRun.
+        /// СѓРєР°Р·Р°РЅРЅРѕРµ СЃРІРѕР№СЃС‚РІС‰, СЃРїРёСЃРѕРє РѕС€РёР±РѕРє
         /// </summary>
         public Dictionary<string, List<string>> Errors => _errors;
         /// <summary>
-        /// имеет ли сущность ошибки проверки.
+        /// РёРјРµРµС‚ Р»Рё СЃСѓС‰РЅРѕСЃС‚СЊ РѕС€РёР±РєРё РїСЂРѕРІРµСЂРєРё.
         /// </summary>
         public virtual bool HasErrors => _errors.Count > 0;
 
         /// <summary>
-        /// ошибки проверки для указанного свойства или для всей сущности
+        /// РѕС€РёР±РєРё РїСЂРѕРІРµСЂРєРё РґР»СЏ СѓРєР°Р·Р°РЅРЅРѕРіРѕ СЃРІРѕР№СЃС‚РІР° РёР»Рё РґР»СЏ РІСЃРµР№ СЃСѓС‰РЅРѕСЃС‚Рё
         /// </summary>
         /// <param name="propName"></param>
         /// <returns></returns>
@@ -45,21 +45,21 @@ public abstract partial class CommandLineRun : ICommandLineRun//, System.Compone
         }
 
         /// <summary>
-        /// Cделать проверку
+        /// CРґРµР»Р°С‚СЊ РїСЂРѕРІРµСЂРєСѓ
         /// </summary>
-        /// <param name="IsClear"> Нужно предварительно очистить cписок ошибок сущности</param>
+        /// <param name="IsClear"> РќСѓР¶РЅРѕ РїСЂРµРґРІР°СЂРёС‚РµР»СЊРЅРѕ РѕС‡РёСЃС‚РёС‚СЊ cРїРёСЃРѕРє РѕС€РёР±РѕРє СЃСѓС‰РЅРѕСЃС‚Рё</param>
         public virtual void MakeAdditionalCheck(bool IsClear = true)
         {
-            if (IsClear) // чистим ошибки
+            if (IsClear) // С‡РёСЃС‚РёРј РѕС€РёР±РєРё
                 this.ClearErrors( true, null);
             AddListErrors(nameof(CommandName), GetErrorsFromAnnotations(nameof(CommandName), this.CommandName));
         }
 
         /// <summary>
-        /// Добавить ошибку для свойства
+        /// Р”РѕР±Р°РІРёС‚СЊ РѕС€РёР±РєСѓ РґР»СЏ СЃРІРѕР№СЃС‚РІР°
         /// </summary>
-        /// <param name="propName">Имя свойства.</param>
-        /// <param name="error">Выявленная ошибка.</param>
+        /// <param name="propName">РРјСЏ СЃРІРѕР№СЃС‚РІР°.</param>
+        /// <param name="error">Р’С‹СЏРІР»РµРЅРЅР°СЏ РѕС€РёР±РєР°.</param>
         public void AddError(string propName, string error)
         {
             AddListErrors(propName, new List<string> { error });
@@ -68,8 +68,8 @@ public abstract partial class CommandLineRun : ICommandLineRun//, System.Compone
 
     #region protected 
         /// <summary>
-        /// ошибки проверки для всего CommandLineRun.
-        /// указанное свойствщ, список ошибок
+        /// РѕС€РёР±РєРё РїСЂРѕРІРµСЂРєРё РґР»СЏ РІСЃРµРіРѕ CommandLineRun.
+        /// СѓРєР°Р·Р°РЅРЅРѕРµ СЃРІРѕР№СЃС‚РІС‰, СЃРїРёСЃРѕРє РѕС€РёР±РѕРє
         /// </summary>
         protected readonly Dictionary<string, List<string>> _errors = new Dictionary<string, List<string>>();
 
@@ -83,26 +83,26 @@ public abstract partial class CommandLineRun : ICommandLineRun//, System.Compone
         }
 
         /// <summary>
-        /// Проверки достоверности на основе аннотаций данных 
-        /// ошибки проверки сущности
+        /// РџСЂРѕРІРµСЂРєРё РґРѕСЃС‚РѕРІРµСЂРЅРѕСЃС‚Рё РЅР° РѕСЃРЅРѕРІРµ Р°РЅРЅРѕС‚Р°С†РёР№ РґР°РЅРЅС‹С… 
+        /// РѕС€РёР±РєРё РїСЂРѕРІРµСЂРєРё СЃСѓС‰РЅРѕСЃС‚Рё
         /// </summary>
-        /// <typeparam name="T"> тип проверяемого значения </typeparam>
-        /// <param name="propName">Имя свойства.</param>
-        /// <param name="value">проверяемое значение</param>
-        /// <returns>Выявленные ошибки проверки свойства сущности.</returns>
+        /// <typeparam name="T"> С‚РёРї РїСЂРѕРІРµСЂСЏРµРјРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ </typeparam>
+        /// <param name="propName">РРјСЏ СЃРІРѕР№СЃС‚РІР°.</param>
+        /// <param name="value">РїСЂРѕРІРµСЂСЏРµРјРѕРµ Р·РЅР°С‡РµРЅРёРµ</param>
+        /// <returns>Р’С‹СЏРІР»РµРЅРЅС‹Рµ РѕС€РёР±РєРё РїСЂРѕРІРµСЂРєРё СЃРІРѕР№СЃС‚РІР° СЃСѓС‰РЅРѕСЃС‚Рё.</returns>
         protected List<string> GetErrorsFromAnnotations<TEntity>(string propName, TEntity value)
         {
-            var results = new List<ValidationResult>(); //информацией о возникших ошибках. 
+            var results = new List<ValidationResult>(); //РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ РІРѕР·РЅРёРєС€РёС… РѕС€РёР±РєР°С…. 
             var vc = new ValidationContext(this, null, null) { MemberName = propName };
-	// Validator позволяет проверять, есть ли в объекте ошибки, связанные с аннотациями данных, в ValidationContext. 
+	// Validator РїРѕР·РІРѕР»СЏРµС‚ РїСЂРѕРІРµСЂСЏС‚СЊ, РµСЃС‚СЊ Р»Рё РІ РѕР±СЉРµРєС‚Рµ РѕС€РёР±РєРё, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ Р°РЅРЅРѕС‚Р°С†РёСЏРјРё РґР°РЅРЅС‹С…, РІ ValidationContext. 
             var isValid = Validator.TryValidateProperty(value, vc, results);
             return (isValid) ? null : results.ConvertAll( o => o.ErrorMessage);
         }
         /// <summary>
-        /// Добавить ошибки для свойства
+        /// Р”РѕР±Р°РІРёС‚СЊ РѕС€РёР±РєРё РґР»СЏ СЃРІРѕР№СЃС‚РІР°
         /// </summary>
-        /// <param name="propName">Имя свойства.</param>
-        /// <param name="errors">Выявленные ошибки.</param>
+        /// <param name="propName">РРјСЏ СЃРІРѕР№СЃС‚РІР°.</param>
+        /// <param name="errors">Р’С‹СЏРІР»РµРЅРЅС‹Рµ РѕС€РёР±РєРё.</param>
         /// AddListError
         public void AddListErrors(string propName, List<string> errors)
         {
@@ -110,14 +110,14 @@ public abstract partial class CommandLineRun : ICommandLineRun//, System.Compone
             {
                 bool changed = false;
                 if (!_errors.ContainsKey(propName))
-                {// не присутствует
+                {// РЅРµ РїСЂРёСЃСѓС‚СЃС‚РІСѓРµС‚
                     _errors.Add(propName, new List<string>());
                     changed = true;
                 }
                 var erlist = _errors[propName];
                 foreach (var err in errors)
                 {
-                    if (erlist.Contains(err)) // уже присутствует
+                    if (erlist.Contains(err)) // СѓР¶Рµ РїСЂРёСЃСѓС‚СЃС‚РІСѓРµС‚
                         continue;
                     erlist.Add(err);
                     changed = true;
@@ -146,24 +146,24 @@ public abstract partial class CommandLineRun : ICommandLineRun//, System.Compone
 
 
     /// <summary>
-    /// делегат метода, обрабатывающий событие, когда событие предоставляет данные.
-    /// DataErrorsChangedEventArgs Предоставляет данные для события System.ComponentModel.INotifyDataErrorInfo.ErrorsChanged.
+    /// РґРµР»РµРіР°С‚ РјРµС‚РѕРґР°, РѕР±СЂР°Р±Р°С‚С‹РІР°СЋС‰РёР№ СЃРѕР±С‹С‚РёРµ, РєРѕРіРґР° СЃРѕР±С‹С‚РёРµ РїСЂРµРґРѕСЃС‚Р°РІР»СЏРµС‚ РґР°РЅРЅС‹Рµ.
+    /// DataErrorsChangedEventArgs РџСЂРµРґРѕСЃС‚Р°РІР»СЏРµС‚ РґР°РЅРЅС‹Рµ РґР»СЏ СЃРѕР±С‹С‚РёСЏ System.ComponentModel.INotifyDataErrorInfo.ErrorsChanged.
     /// </summary>
     public event EventHandler<System.ComponentModel.DataErrorsChangedEventArgs> ErrorsChanged;
      //   System.ComponentModel.INotifyDataErrorInfo ErrorsChanged1;
 
 
-        #region partial Частичные методы
+        #region partial Р§Р°СЃС‚РёС‡РЅС‹Рµ РјРµС‚РѕРґС‹
         /// <summary>
-        /// Частичный метод. настройка выборки GetErrors.
+        /// Р§Р°СЃС‚РёС‡РЅС‹Р№ РјРµС‚РѕРґ. РЅР°СЃС‚СЂРѕР№РєР° РІС‹Р±РѕСЂРєРё GetErrors.
         /// </summary>
-        /// <param name="countS"> собственно сам объект</param>
+        /// <param name="countS"> СЃРѕР±СЃС‚РІРµРЅРЅРѕ СЃР°Рј РѕР±СЉРµРєС‚</param>
         partial void GetErrorsStart(CommandLineRun countE);
         /// <summary>
-        /// Частичный метод. Утвердим выборку GetErrors.
+        /// Р§Р°СЃС‚РёС‡РЅС‹Р№ РјРµС‚РѕРґ. РЈС‚РІРµСЂРґРёРј РІС‹Р±РѕСЂРєСѓ GetErrors.
         /// </summary>
         /// <param name="_t"></param>
-        /// <param name="countS"> собственно сам объект</param>
+        /// <param name="countS"> СЃРѕР±СЃС‚РІРµРЅРЅРѕ СЃР°Рј РѕР±СЉРµРєС‚</param>
         partial void GetErrorsEnd(IEnumerable _t, CommandLineRun countE);
 
         #endregion partial

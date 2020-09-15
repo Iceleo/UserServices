@@ -7,40 +7,40 @@ using Patterns.SpecificationClassic;
 //using UserServices.ICommandLineService;
 
 /// <summary>
-/// Проверки достоверности свойства на основе аннотаций данных 
-/// ошибки проверки сущности заносим в список ошибок класс командной строки
+/// РџСЂРѕРІРµСЂРєРё РґРѕСЃС‚РѕРІРµСЂРЅРѕСЃС‚Рё СЃРІРѕР№СЃС‚РІР° РЅР° РѕСЃРЅРѕРІРµ Р°РЅРЅРѕС‚Р°С†РёР№ РґР°РЅРЅС‹С… 
+/// РѕС€РёР±РєРё РїСЂРѕРІРµСЂРєРё СЃСѓС‰РЅРѕСЃС‚Рё Р·Р°РЅРѕСЃРёРј РІ СЃРїРёСЃРѕРє РѕС€РёР±РѕРє РєР»Р°СЃСЃ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё
 /// </summary>
 public class SpecificationFromAnnotations : SpecificationClassic<ICommandLineRun>
 //SpecificationExpression<CommandLineSample>
 {
     /// <summary>
-    /// Имя свойства для проверки достоверности на основе аннотаций данных 
+    /// РРјСЏ СЃРІРѕР№СЃС‚РІР° РґР»СЏ РїСЂРѕРІРµСЂРєРё РґРѕСЃС‚РѕРІРµСЂРЅРѕСЃС‚Рё РЅР° РѕСЃРЅРѕРІРµ Р°РЅРЅРѕС‚Р°С†РёР№ РґР°РЅРЅС‹С… 
     /// </summary>
 	readonly string propName;
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="NameProp">Имя свойства для проверки</param>
+    /// <param name="NameProp">РРјСЏ СЃРІРѕР№СЃС‚РІР° РґР»СЏ РїСЂРѕРІРµСЂРєРё</param>
     public SpecificationFromAnnotations(string NameProp)
     {
         propName = NameProp;
     }
 
     /// <summary>
-    /// Проверка существования файла
+    /// РџСЂРѕРІРµСЂРєР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёСЏ С„Р°Р№Р»Р°
     /// </summary>
-    /// <param name="boss">класс командной строки</param>
-    /// <returns>true - файл существует.</returns>
+    /// <param name="boss">РєР»Р°СЃСЃ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё</param>
+    /// <returns>true - С„Р°Р№Р» СЃСѓС‰РµСЃС‚РІСѓРµС‚.</returns>
     public override bool IsSatisfiedBy(ICommandLineRun boss)
     { //
         PropertyInfo pp = boss.GetType().GetProperty(propName);
 	    var value = pp.GetValue( boss, null).ToString();
-            List<ValidationResult> results = new List<ValidationResult>(); //информацией о возникших ошибках. 
+            List<ValidationResult> results = new List<ValidationResult>(); //РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ РІРѕР·РЅРёРєС€РёС… РѕС€РёР±РєР°С…. 
             var vc = new ValidationContext(this, null, null) { MemberName = propName };
         bool rc = false;
         try
         {
-            // Validator позволяет проверять, есть ли в объекте ошибки, связанные с аннотациями данных, в ValidationContext. 
+            // Validator РїРѕР·РІРѕР»СЏРµС‚ РїСЂРѕРІРµСЂСЏС‚СЊ, РµСЃС‚СЊ Р»Рё РІ РѕР±СЉРµРєС‚Рµ РѕС€РёР±РєРё, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ Р°РЅРЅРѕС‚Р°С†РёСЏРјРё РґР°РЅРЅС‹С…, РІ ValidationContext. 
             rc = Validator.TryValidateProperty(value, vc, results);
 
             if (!rc) //
