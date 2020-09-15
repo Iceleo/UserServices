@@ -5,8 +5,8 @@ using Patterns.SpecificationClassic;
 //using UserServices.ICommandLineService;
 
 /// <summary>
-/// логическое исключение ИЛИ для вызова  приложения из командной строки. 
-/// Обе подкоманды указываться вместе при вызыве не могут
+/// Р»РѕРіРёС‡РµСЃРєРѕРµ РёСЃРєР»СЋС‡РµРЅРёРµ РР›Р РґР»СЏ РІС‹Р·РѕРІР°  РїСЂРёР»РѕР¶РµРЅРёСЏ РёР· РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё. 
+/// РћР±Рµ РїРѕРґРєРѕРјР°РЅРґС‹ СѓРєР°Р·С‹РІР°С‚СЊСЃСЏ РІРјРµСЃС‚Рµ РїСЂРё РІС‹Р·С‹РІРµ РЅРµ РјРѕРіСѓС‚
 /// </summary>
 public class SpecificationCommandLineXor : SpecificationCommandLine<List<ICommandLineSample>>
 //SpecificationExpression<CommandLineSample>
@@ -24,23 +24,23 @@ public class SpecificationCommandLineXor : SpecificationCommandLine<List<IComman
 	//return (cmd.Contains(leftCommand)) ^ (cmd.Contains(rightCommand));
         bool rc = false;
 		if (cmdList.Contains(leftCommand))
-			if (!cmdList.Contains(rightCommand)) //leftCommand запускаем
+			if (!cmdList.Contains(rightCommand)) //leftCommand Р·Р°РїСѓСЃРєР°РµРј
 				rc = true;	
 			else { 
-				_error = String.Format($"Команда {leftCommand.CommandName} " +
-					$"не может выполняться с командой {rightCommand.CommandName}.");
-				rightCommand.SetCommandLineBad(); //rightCommand нельзя запускать
-	       		//leftCommand.SetCommandLineBad(); //leftCommand нельзя запускать
+				_error = String.Format($"РљРѕРјР°РЅРґР° {leftCommand.CommandName} " +
+					$"РЅРµ РјРѕР¶РµС‚ РІС‹РїРѕР»РЅСЏС‚СЊСЃСЏ СЃ РєРѕРјР°РЅРґРѕР№ {rightCommand.CommandName}.");
+				rightCommand.SetCommandLineBad(); //rightCommand РЅРµР»СЊР·СЏ Р·Р°РїСѓСЃРєР°С‚СЊ
+	       		//leftCommand.SetCommandLineBad(); //leftCommand РЅРµР»СЊР·СЏ Р·Р°РїСѓСЃРєР°С‚СЊ
 		   }
 		else //
-			if (cmdList.Contains(rightCommand))  //rightCommand запускаем
+			if (cmdList.Contains(rightCommand))  //rightCommand Р·Р°РїСѓСЃРєР°РµРј
 				rc = true;	
-			else // не представлены обе. 
-				if (cmdList.Count > 0) // Возможна сложная схема вызова
+			else // РЅРµ РїСЂРµРґСЃС‚Р°РІР»РµРЅС‹ РѕР±Рµ. 
+				if (cmdList.Count > 0) // Р’РѕР·РјРѕР¶РЅР° СЃР»РѕР¶РЅР°СЏ СЃС…РµРјР° РІС‹Р·РѕРІР°
 					rc = true;
-				else // Ошибка вызова
-				_error = String.Format($"В командной строке нужно указать " +
-				$"команду {leftCommand.CommandName} или команду {rightCommand.CommandName} .");
+				else // РћС€РёР±РєР° РІС‹Р·РѕРІР°
+				_error = String.Format($"Р’ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРµ РЅСѓР¶РЅРѕ СѓРєР°Р·Р°С‚СЊ " +
+				$"РєРѕРјР°РЅРґСѓ {leftCommand.CommandName} РёР»Рё РєРѕРјР°РЅРґСѓ {rightCommand.CommandName} .");
 
 		return	rc;
 	}

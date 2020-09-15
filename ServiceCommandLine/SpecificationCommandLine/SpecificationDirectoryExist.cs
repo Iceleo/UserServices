@@ -4,7 +4,7 @@ using Patterns.SpecificationClassic;
 //using UserServices.ICommandLineService;
 
 /// <summary>
-///  Проверка существования директории
+///  РџСЂРѕРІРµСЂРєР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёСЏ РґРёСЂРµРєС‚РѕСЂРёРё
 /// </summary>
 public class SpecificationDirectoryExist : SpecificationClassic<ICommandLineRun>
 //SpecificationExpression<CommandLineSample>
@@ -21,17 +21,17 @@ public class SpecificationDirectoryExist : SpecificationClassic<ICommandLineRun>
 	    bool rc = false;
         PropertyInfo pp = boss.GetType().GetProperty(propName);
         string directory = pp.GetValue( boss, null).ToString();
-//// проверка параметров командной строки
-       if (directory[directory.Length-1] != sleshBack) // нет закрывающего слеша
+//// РїСЂРѕРІРµСЂРєР° РїР°СЂР°РјРµС‚СЂРѕРІ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё
+       if (directory[directory.Length-1] != sleshBack) // РЅРµС‚ Р·Р°РєСЂС‹РІР°СЋС‰РµРіРѕ СЃР»РµС€Р°
            directory += sleshBack;
 
       if ( !string.IsNullOrEmpty(directory) && 
-            System.IO.Directory.Exists(directory)) //  "Директорий {directory} существует.";
+            System.IO.Directory.Exists(directory)) //  "Р”РёСЂРµРєС‚РѕСЂРёР№ {directory} СЃСѓС‰РµСЃС‚РІСѓРµС‚.";
 	        rc = true;
        else
        {
          boss.AddError( propName,  string.Format(
-             $" Путь директории {directory} - ошибочен."));
+             $" РџСѓС‚СЊ РґРёСЂРµРєС‚РѕСЂРёРё {directory} - РѕС€РёР±РѕС‡РµРЅ."));
         } 
 	  return	rc;
 	}

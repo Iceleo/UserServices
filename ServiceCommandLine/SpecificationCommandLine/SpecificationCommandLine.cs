@@ -5,28 +5,28 @@ using Patterns.SpecificationClassic;
 //using UserServices.ICommandLineService;
 
 /// <summary>
-///  Спецификация разбора подкоманд командной строки вызова приложения
+///  РЎРїРµС†РёС„РёРєР°С†РёСЏ СЂР°Р·Р±РѕСЂР° РїРѕРґРєРѕРјР°РЅРґ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё РІС‹Р·РѕРІР° РїСЂРёР»РѕР¶РµРЅРёСЏ
 /// </summary>
 public abstract class SpecificationCommandLine<T> : SpecificationClassic<T>
 //SpecificationExpression<CommandLineSample>
 {
 	/// <summary>
-	/// Левая подкоманда спецификации 
+	/// Р›РµРІР°СЏ РїРѕРґРєРѕРјР°РЅРґР° СЃРїРµС†РёС„РёРєР°С†РёРё 
 	/// </summary>
 	protected readonly ICommandLineSample leftCommand ;
 	/// <summary>
-	/// Правая подкоманда спецификации 
+	/// РџСЂР°РІР°СЏ РїРѕРґРєРѕРјР°РЅРґР° СЃРїРµС†РёС„РёРєР°С†РёРё 
 	/// </summary>
 	protected readonly ICommandLineSample rightCommand;
 
 	/// <summary>
-	/// Ошибка проверки спецификации
+	/// РћС€РёР±РєР° РїСЂРѕРІРµСЂРєРё СЃРїРµС†РёС„РёРєР°С†РёРё
 	/// </summary>
 	protected string _error;
 	public string GetError()=>  _error;
 
 	/// <summary>
-	/// Обозначение спецификации разбора подкоманд
+	/// РћР±РѕР·РЅР°С‡РµРЅРёРµ СЃРїРµС†РёС„РёРєР°С†РёРё СЂР°Р·Р±РѕСЂР° РїРѕРґРєРѕРјР°РЅРґ
 	/// </summary>
 	String operation;
 	public SpecificationCommandLine(ICommandLineSample _leftCommand, 

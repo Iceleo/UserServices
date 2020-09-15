@@ -13,45 +13,45 @@ using Patterns.SpecificationClassic;
 
 
     /// <summary>
-    /// Класс работы консольного приложения. 
-    /// Обработка командной строки.
-    /// Обработка данных из конфигурационного файла 
+    /// РљР»Р°СЃСЃ СЂР°Р±РѕС‚С‹ РєРѕРЅСЃРѕР»СЊРЅРѕРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ. 
+    /// РћР±СЂР°Р±РѕС‚РєР° РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё.
+    /// РћР±СЂР°Р±РѕС‚РєР° РґР°РЅРЅС‹С… РёР· РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅРѕРіРѕ С„Р°Р№Р»Р° 
     /// </summary>
     [Serializable, XmlRoot(Namespace = "http://www.MyCompany.com")]
     public class testCommandLine : CommandLineRun
     {
-        // В командной строке  " .. test 
+        // Р’ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРµ  " .. test 
        
         /// <summary>
         /// 
         /// </summary>
         private static testCommandLine _testCommand;       
-        public static testCommandLine countCommand =>_testCommand; // Объект для доступа
+        public static testCommandLine countCommand =>_testCommand; // РћР±СЉРµРєС‚ РґР»СЏ РґРѕСЃС‚СѓРїР°
 
         [XmlAttribute]
         public override string CommandName { get; set; }
 
         [XmlAttribute]
-        public string testconfig { get; set; }  //Путь к конфигурационному файлу
+        public string testconfig { get; set; }  //РџСѓС‚СЊ Рє РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅРѕРјСѓ С„Р°Р№Р»Сѓ
         [XmlAttribute]
-        public string testbase { get; set; }    //Путь к корневой папке проекта
+        public string testbase { get; set; }    //РџСѓС‚СЊ Рє РєРѕСЂРЅРµРІРѕР№ РїР°РїРєРµ РїСЂРѕРµРєС‚Р°
         [XmlAttribute]
-        public string targethost { get; set; }  //Целевой домен
+        public string targethost { get; set; }  //Р¦РµР»РµРІРѕР№ РґРѕРјРµРЅ
 
-        // восстанавление/сохраненние данных из/в файла.
+        // РІРѕСЃСЃС‚Р°РЅР°РІР»РµРЅРёРµ/СЃРѕС…СЂР°РЅРµРЅРЅРёРµ РґР°РЅРЅС‹С… РёР·/РІ С„Р°Р№Р»Р°.
         /// <summary>
-        /// Параметр Load Serialize data
+        /// РџР°СЂР°РјРµС‚СЂ Load Serialize data
         /// </summary>
         public bool LoadData { get; set; } = false;
         /// <summary>
-        /// Параметр Save Serialize data
+        /// РџР°СЂР°РјРµС‚СЂ Save Serialize data
         /// </summary
         public bool SaveData { get; set; } = false;
         public string FileSerialize { get; set; }
 
-        // из конфигурации
+        // РёР· РєРѕРЅС„РёРіСѓСЂР°С†РёРё
         [XmlAttribute]
-        protected string _shemas;  // Схема подключения к сайту 
+        protected string _shemas;  // РЎС…РµРјР° РїРѕРґРєР»СЋС‡РµРЅРёСЏ Рє СЃР°Р№С‚Сѓ 
         public testCommandLine()
         {
             _testCommand = this;
@@ -59,54 +59,54 @@ using Patterns.SpecificationClassic;
 
 
         /// <summary>
-        /// выполнить 
+        /// РІС‹РїРѕР»РЅРёС‚СЊ 
         /// </summary>
         public override void Run()
-        {// в режиме Console
-            Console.WriteLine($"{AppName} вызов команды /test -testbase={testbase}  -testconfig={testconfig} -targethost={targethost} .");
+        {// РІ СЂРµР¶РёРјРµ Console
+            Console.WriteLine($"{AppName} РІС‹Р·РѕРІ РєРѕРјР°РЅРґС‹ /test -testbase={testbase}  -testconfig={testconfig} -targethost={targethost} .");
         }
 
         /// <summary>
-        /// справка
+        /// СЃРїСЂР°РІРєР°
         /// </summary>
         public override void Help()
         {
-            // в режиме Console
+            // РІ СЂРµР¶РёРјРµ Console
             RulesOfchallenge();
         }
         /// <summary>
-        /// правила вызова
+        /// РїСЂР°РІРёР»Р° РІС‹Р·РѕРІР°
         /// </summary>
         public override void RulesOfchallenge()
-        {  // в режиме Console
-            //Console.WriteLine(" Синтаксис вызова команды test :");
+        {  // РІ СЂРµР¶РёРјРµ Console
+            //Console.WriteLine(" РЎРёРЅС‚Р°РєСЃРёСЃ РІС‹Р·РѕРІР° РєРѕРјР°РЅРґС‹ test :");
             //Console.WriteLine("The syntax for calling test command:");
             Console.WriteLine($"{AppName} /test -testbase=pathprogram  -testconfig=pathlocal -targethost=host ");
-            Console.WriteLine("Например, {0} с командой test можно запустить: ", AppName);
+            Console.WriteLine("РќР°РїСЂРёРјРµСЂ, {0} СЃ РєРѕРјР°РЅРґРѕР№ test РјРѕР¶РЅРѕ Р·Р°РїСѓСЃС‚РёС‚СЊ: ", AppName);
             Console.WriteLine(AppName,
                @" /test -testbase=C:\work\my_exe\ -testconfig=C:\work\my_test\ -targethost=en.wikipedia.org");
-            Console.WriteLine("Параметры  -testconfig, -targethost должны быть реально существующими.");
-            Console.WriteLine("Директория у -testbase при отсуствии создается, если путь правильный.");
+            Console.WriteLine("РџР°СЂР°РјРµС‚СЂС‹  -testconfig, -targethost РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ СЂРµР°Р»СЊРЅРѕ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёРјРё.");
+            Console.WriteLine("Р”РёСЂРµРєС‚РѕСЂРёСЏ Сѓ -testbase РїСЂРё РѕС‚СЃСѓСЃС‚РІРёРё СЃРѕР·РґР°РµС‚СЃСЏ, РµСЃР»Рё РїСѓС‚СЊ РїСЂР°РІРёР»СЊРЅС‹Р№.");
         }
   
         /// <summary>
-        /// Описываем главную спецификацию проверки свойств класса
+        /// РћРїРёСЃС‹РІР°РµРј РіР»Р°РІРЅСѓСЋ СЃРїРµС†РёС„РёРєР°С†РёСЋ РїСЂРѕРІРµСЂРєРё СЃРІРѕР№СЃС‚РІ РєР»Р°СЃСЃР°
         /// </summary>
         protected override void BuildMainSpecification()
         {
-            this.ClearErrors(); // очистим список
-            // формируем итоговою спецификаций для проверки
+            this.ClearErrors(); // РѕС‡РёСЃС‚РёРј СЃРїРёСЃРѕРє
+            // С„РѕСЂРјРёСЂСѓРµРј РёС‚РѕРіРѕРІРѕСЋ СЃРїРµС†РёС„РёРєР°С†РёР№ РґР»СЏ РїСЂРѕРІРµСЂРєРё
             string nameProp = nameof(testconfig);
             SpecificationClassic<ICommandLineRun> pathconfigSp = (SpecificationClassic<ICommandLineRun>)
-              (new SpecificationFromAnnotations(nameProp)). //Проверки на основе аннотаций данных
-                    And(new SpecificationDirectoryExist(nameProp));//Проверка существования директории
+              (new SpecificationFromAnnotations(nameProp)). //РџСЂРѕРІРµСЂРєРё РЅР° РѕСЃРЅРѕРІРµ Р°РЅРЅРѕС‚Р°С†РёР№ РґР°РЅРЅС‹С…
+                    And(new SpecificationDirectoryExist(nameProp));//РџСЂРѕРІРµСЂРєР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёСЏ РґРёСЂРµРєС‚РѕСЂРёРё
             nameProp = nameof(testbase);
             SpecificationClassic<ICommandLineRun> pathbaseSp = (SpecificationClassic<ICommandLineRun>)
-              (new SpecificationFromAnnotations(nameProp)).//Проверки на основе аннотаций данных
-                    And(new SpecificationDirectoryExist(nameProp));//Проверка существования директории
+              (new SpecificationFromAnnotations(nameProp)).//РџСЂРѕРІРµСЂРєРё РЅР° РѕСЃРЅРѕРІРµ Р°РЅРЅРѕС‚Р°С†РёР№ РґР°РЅРЅС‹С…
+                    And(new SpecificationDirectoryExist(nameProp));//РџСЂРѕРІРµСЂРєР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёСЏ РґРёСЂРµРєС‚РѕСЂРёРё
 
             _mainSpecification = pathconfigSp.And(pathbaseSp);//
-            if (this.LoadData && this.SaveData) //нужно загрузить/сохранить из файла
+            if (this.LoadData && this.SaveData) //РЅСѓР¶РЅРѕ Р·Р°РіСЂСѓР·РёС‚СЊ/СЃРѕС…СЂР°РЅРёС‚СЊ РёР· С„Р°Р№Р»Р°
             {
                     _mainSpecification = _mainSpecification.
                         And(new SpecificationFileExist(nameof(FileSerialize)));

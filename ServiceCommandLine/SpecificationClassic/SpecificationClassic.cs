@@ -1,5 +1,5 @@
 // https://bool.dev/blog/detail/spetsifikatsiya-pattern-proektirovaniya
-// Классическая реализация спецификации
+// РљР»Р°СЃСЃРёС‡РµСЃРєР°СЏ СЂРµР°Р»РёР·Р°С†РёСЏ СЃРїРµС†РёС„РёРєР°С†РёРё
 using System;
 
 namespace Patterns.SpecificationClassic
@@ -21,7 +21,7 @@ namespace Patterns.SpecificationClassic
 
     }
     /// <summary>
-    /// Выполняет логическое   над спецификациями
+    /// Р’С‹РїРѕР»РЅСЏРµС‚ Р»РѕРіРёС‡РµСЃРєРѕРµ   РЅР°Рґ СЃРїРµС†РёС„РёРєР°С†РёСЏРјРё
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class AndSpecification<T> : SpecificationClassic<T>
@@ -38,7 +38,7 @@ namespace Patterns.SpecificationClassic
         public override bool IsSatisfiedBy(T candidate) => _left.IsSatisfiedBy(candidate) && _right.IsSatisfiedBy(candidate);
     }
     /// <summary>
-    /// Выполняет логическое  AND над спецификациями
+    /// Р’С‹РїРѕР»РЅСЏРµС‚ Р»РѕРіРёС‡РµСЃРєРѕРµ  AND РЅР°Рґ СЃРїРµС†РёС„РёРєР°С†РёСЏРјРё
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class AndNotSpecification<T> : SpecificationClassic<T>
@@ -56,7 +56,7 @@ namespace Patterns.SpecificationClassic
     }
 
     /// <summary>
-    /// Выполняет логическое  OR над спецификациями
+    /// Р’С‹РїРѕР»РЅСЏРµС‚ Р»РѕРіРёС‡РµСЃРєРѕРµ  OR РЅР°Рґ СЃРїРµС†РёС„РёРєР°С†РёСЏРјРё
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class OrSpecification<T> : SpecificationClassic<T>
@@ -74,7 +74,7 @@ namespace Patterns.SpecificationClassic
     }
 
     /// <summary>
-    /// Выполняет логическое   над спецификациями
+    /// Р’С‹РїРѕР»РЅСЏРµС‚ Р»РѕРіРёС‡РµСЃРєРѕРµ   РЅР°Рґ СЃРїРµС†РёС„РёРєР°С†РёСЏРјРё
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class OrNotSpecification<T> : SpecificationClassic<T>
@@ -91,7 +91,7 @@ namespace Patterns.SpecificationClassic
     }
 
     /// <summary>
-    /// Выполняет логическое  XOR над спецификациями
+    /// Р’С‹РїРѕР»РЅСЏРµС‚ Р»РѕРіРёС‡РµСЃРєРѕРµ  XOR РЅР°Рґ СЃРїРµС†РёС„РёРєР°С†РёСЏРјРё
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class XorSpecification<T> : SpecificationClassic<T>
@@ -109,7 +109,7 @@ namespace Patterns.SpecificationClassic
     }
 
     /// <summary>
-    /// Выполняет логическое NOT над спецификацией
+    /// Р’С‹РїРѕР»РЅСЏРµС‚ Р»РѕРіРёС‡РµСЃРєРѕРµ NOT РЅР°Рґ СЃРїРµС†РёС„РёРєР°С†РёРµР№
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class NotSpecification<T> : SpecificationClassic<T>

@@ -14,7 +14,7 @@ public abstract partial class CommandLineRun : ICommandLineRun
 {
 
     /// <summary>
-    /// имя приложения 
+    /// РёРјСЏ РїСЂРёР»РѕР¶РµРЅРёСЏ 
     /// </summary>
     public virtual string AppName { get; set; }
 
@@ -23,17 +23,17 @@ public abstract partial class CommandLineRun : ICommandLineRun
     [DisplayName("Name CommandLine")]
     [StringLength(128, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
     /// <summary>
-    /// Имя комманды
+    /// РРјСЏ РєРѕРјРјР°РЅРґС‹
     /// </summary>
     public virtual string CommandName { get; set; }
 
     /// <summary>
-    /// Параметры комманды
+    /// РџР°СЂР°РјРµС‚СЂС‹ РєРѕРјРјР°РЅРґС‹
     /// </summary>
     public Dictionary<string, string> Parameters { get; protected set; } = new Dictionary<string, string>();
 
     /// <summary>
-    /// свойства комманды не найденные в свойствах  //Параметры комманды
+    /// СЃРІРѕР№СЃС‚РІР° РєРѕРјРјР°РЅРґС‹ РЅРµ РЅР°Р№РґРµРЅРЅС‹Рµ РІ СЃРІРѕР№СЃС‚РІР°С…  //РџР°СЂР°РјРµС‚СЂС‹ РєРѕРјРјР°РЅРґС‹
     /// </summary>
     public virtual Dictionary<string, string> PropertiesNotFound { get; set; }
 
@@ -44,12 +44,12 @@ public abstract partial class CommandLineRun : ICommandLineRun
             	AppName = Path.GetFileName(AppName);
 	}
     /// <summary>
-    /// выполнить 
+    /// РІС‹РїРѕР»РЅРёС‚СЊ 
     /// </summary>
     public abstract void Run();
 
     /// <summary>
-    /// справка
+    /// СЃРїСЂР°РІРєР°
     /// </summary>
     public virtual void Help()
     {
@@ -57,43 +57,43 @@ public abstract partial class CommandLineRun : ICommandLineRun
     }
 
     /// <summary>
-    /// правила вызова
+    /// РїСЂР°РІРёР»Р° РІС‹Р·РѕРІР°
     /// </summary>
     public abstract void RulesOfchallenge();
 
     /// <summary>
-    /// Удовлетворяются ли условия начала работы класса
+    /// РЈРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‚СЃСЏ Р»Рё СѓСЃР»РѕРІРёСЏ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ РєР»Р°СЃСЃР°
     /// </summary>
-    /// <returns>True - условия начала работы класса удовлетворены</returns>
+    /// <returns>True - СѓСЃР»РѕРІРёСЏ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ РєР»Р°СЃСЃР° СѓРґРѕРІР»РµС‚РІРѕСЂРµРЅС‹</returns>
     public virtual bool IsSatisfiedBy(Dictionary<string, string> _propertiesNotFound)
     {
         bool rc = true;
-        if (_mainSpecification == null) // не создавали
+        if (_mainSpecification == null) // РЅРµ СЃРѕР·РґР°РІР°Р»Рё
             BuildMainSpecification();
-        // проверка условий начала работы класса
+        // РїСЂРѕРІРµСЂРєР° СѓСЃР»РѕРІРёР№ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ РєР»Р°СЃСЃР°
         if (_mainSpecification != null) //
             rc = _mainSpecification.IsSatisfiedBy(this);
-        // доп. проверка условий для работы класса
+        // РґРѕРї. РїСЂРѕРІРµСЂРєР° СѓСЃР»РѕРІРёР№ РґР»СЏ СЂР°Р±РѕС‚С‹ РєР»Р°СЃСЃР°
         rc = (MakeAdditionalCheck() && rc) ? true : false;
         return rc;
     }
 
     /// <summary>
-    /// Cделать доп. проверку
+    /// CРґРµР»Р°С‚СЊ РґРѕРї. РїСЂРѕРІРµСЂРєСѓ
     /// </summary>
-    /// <returns>True - условия начала работы класса удовлетворены</returns>/// 
+    /// <returns>True - СѓСЃР»РѕРІРёСЏ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹ РєР»Р°СЃСЃР° СѓРґРѕРІР»РµС‚РІРѕСЂРµРЅС‹</returns>/// 
     public virtual bool MakeAdditionalCheck() => true;
     
 
     #region MainSpecification
 
     /// <summary>
-    /// Главная спецификация проверки свойств класса
+    /// Р“Р»Р°РІРЅР°СЏ СЃРїРµС†РёС„РёРєР°С†РёСЏ РїСЂРѕРІРµСЂРєРё СЃРІРѕР№СЃС‚РІ РєР»Р°СЃСЃР°
     /// </summary>
     protected ISpecification<ICommandLineRun> _mainSpecification;
     public ISpecification<ICommandLineRun> GetMainSpecification =>_mainSpecification;
     /// <summary>
-    /// Описываем главную спецификацию проверки свойств класса
+    /// РћРїРёСЃС‹РІР°РµРј РіР»Р°РІРЅСѓСЋ СЃРїРµС†РёС„РёРєР°С†РёСЋ РїСЂРѕРІРµСЂРєРё СЃРІРѕР№СЃС‚РІ РєР»Р°СЃСЃР°
     /// </summary>
     protected virtual void BuildMainSpecification() { }
 

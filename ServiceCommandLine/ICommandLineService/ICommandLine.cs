@@ -3,22 +3,22 @@ using System;
  public interface ICommandLine
  {
     /// <summary>
-    /// выполнить 
+    /// РІС‹РїРѕР»РЅРёС‚СЊ 
     /// </summary>
     void Run();
 
     /// <summary>
-    /// справка
+    /// СЃРїСЂР°РІРєР°
     /// </summary>
     void Help();
 
     /// <summary>
-    /// правила вызова
+    /// РїСЂР°РІРёР»Р° РІС‹Р·РѕРІР°
     /// </summary>
     void RulesOfchallenge();	
 
     /// <summary>
-    /// Имя комманды
+    /// РРјСЏ РєРѕРјРјР°РЅРґС‹
     /// </summary>
     string CommandName { get; set;}
  }

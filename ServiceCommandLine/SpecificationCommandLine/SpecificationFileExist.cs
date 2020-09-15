@@ -6,7 +6,7 @@ using Patterns.SpecificationClassic;
 
 
 /// <summary>
-///  Проверка существования файла
+///  РџСЂРѕРІРµСЂРєР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёСЏ С„Р°Р№Р»Р°
 /// </summary>
 public class SpecificationFileExist : SpecificationClassic<ICommandLineRun>
 //SpecificationExpression<CommandLineSample>
@@ -18,25 +18,25 @@ public class SpecificationFileExist : SpecificationClassic<ICommandLineRun>
     }
 
     /// <summary>
-    /// Проверка существования файла
+    /// РџСЂРѕРІРµСЂРєР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёСЏ С„Р°Р№Р»Р°
     /// </summary>
-    /// <param name="boss">класс командной строки</param>
-    /// <returns>true - файл существует.</returns>
+    /// <param name="boss">РєР»Р°СЃСЃ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё</param>
+    /// <returns>true - С„Р°Р№Р» СЃСѓС‰РµСЃС‚РІСѓРµС‚.</returns>
     public override bool IsSatisfiedBy(ICommandLineRun boss)
     { //
 	    bool rc = false;
         PropertyInfo pp = boss.GetType().GetProperty(propName);
 	    string file = pp.GetValue( boss, null).ToString(); 
 
-        //// проверка параметров командной строки        
-        if (!string.IsNullOrEmpty(file) && System.IO.File.Exists(file)) //есть файл
+        //// РїСЂРѕРІРµСЂРєР° РїР°СЂР°РјРµС‚СЂРѕРІ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё        
+        if (!string.IsNullOrEmpty(file) && System.IO.File.Exists(file)) //РµСЃС‚СЊ С„Р°Р№Р»
         {            
 	        rc = true;
         }
         else
         {
             boss.AddError( propName, string.Format(
-		        $" Путь или имя файла {file} - ошибочны."));
+		        $" РџСѓС‚СЊ РёР»Рё РёРјСЏ С„Р°Р№Р»Р° {file} - РѕС€РёР±РѕС‡РЅС‹."));
         }
         return	rc;
 	}
