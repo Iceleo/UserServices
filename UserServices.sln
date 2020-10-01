@@ -29,11 +29,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CMDPlugIns", "CMDPlugIns", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CMDPluginContext", "CommandLinePlugIns\CMDPluginLoadContext\CMDPluginContext.csproj", "{64EDF8EC-E87E-4F14-B194-13C2F8D16D3C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "helpDinCommandLine", "CommandLinePlugIns\helpDinCommandLine\helpCommandLine2.csproj", "{C182FA3C-3969-44C8-9FFA-6DD7AC6C2FD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "helpCommandLine2", "CommandLinePlugIns\helpDinCommandLine\helpCommandLine2.csproj", "{C182FA3C-3969-44C8-9FFA-6DD7AC6C2FD6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "parseDinCommandLine", "CommandLinePlugIns\parseDinCommandLine\parseCommandLine2.csproj", "{202A700E-E12E-4AA3-91A1-C4B5A0E64D55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "parseCommandLine2", "CommandLinePlugIns\parseDinCommandLine\parseCommandLine2.csproj", "{202A700E-E12E-4AA3-91A1-C4B5A0E64D55}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "testDinCommandLine", "CommandLinePlugIns\testDinCommandLine\testCommandLine2.csproj", "{AE343C2C-9897-4956-95EC-96C1DBA6C9F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "testCommandLine2", "CommandLinePlugIns\testDinCommandLine\testCommandLine2.csproj", "{AE343C2C-9897-4956-95EC-96C1DBA6C9F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

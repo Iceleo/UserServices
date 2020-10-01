@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\ServiceCommandLine\ICommandLineService\ICommandLineService.csproj" >
+        <Private>false</Private> <!-- сообщает MSBuild - не нужно копировать ICommandLineService.dll в выходной каталог для HelloPlugin -->
+        <ExcludeAssets>runtime</ExcludeAssets> <!-- используется в ссылках на пакеты, которые могут 
+					содержать проект PluginBase или одну из его зависимостей. -->
+    </ProjectReference>
+    <ProjectReference Include="..\..\ServiceCommandLine\CMDLineService\CMDLineService.csproj" >
+        <Private>false</Private> 
+        <ExcludeAssets>runtime</ExcludeAssets>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ServiceCommandLine\SpecificationCommandLine\SpecificationCommandLine.csproj" >
+        <Private>false</Private> 
+        <ExcludeAssets>runtime</ExcludeAssets>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ServiceCommandLine\SpecificationClassic\SpecificationClassic.csproj" >
+        <Private>false</Private> 
+        <ExcludeAssets>runtime</ExcludeAssets>
+    </ProjectReference>
+    <ProjectReference Include="..\CMDPluginLoadContext\CMDPluginContext.csproj" >
+        <Private>false</Private> 
+        <ExcludeAssets>runtime</ExcludeAssets>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Configuration\ConfigurationCMDRun\ConfigurationCMDRun.csproj" >
+        <Private>false</Private> 
+        <ExcludeAssets>runtime</ExcludeAssets>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UserAttributedLib\UserAttributedLib.csproj" >
+        <Private>false</Private> 
+        <ExcludeAssets>runtime</ExcludeAssets>
+    </ProjectReference>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+</Project>

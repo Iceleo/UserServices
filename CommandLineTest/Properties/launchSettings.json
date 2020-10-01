@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "CommandLineTest": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\Juryi\\Documents\\Projects\\ShareProj\\UserServices\\ServiceCommandLine\\CommandLineTest\\bin\\Debug\\netcoreapp3.1\\CommandLineTest.exe",
+      "commandLineArgs": "/parse -pathbase=C:\\work\\test1\\ -pathconfig=C:\\work\\my_parse -targethost=https://panel.qnits.ru/manager_mvc/offers -depthtransitions=4 /help -CommandNameHelp=test"
+    }
+  }
+}
