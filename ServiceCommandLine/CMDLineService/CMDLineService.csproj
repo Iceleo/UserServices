@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>UserServices.CommandLineService</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ICommandLineService\ICommandLineService.csproj" />
+    <ProjectReference Include="..\SpecificationCommandLine\SpecificationCommandLine.csproj" />
+    <ProjectReference Include="..\SpecificationClassic\SpecificationClassic.csproj" />
+    <ProjectReference Include="..\..\UserAttributedLib\UserAttributedLib.csproj" />
+    <ProjectReference Include="..\..\CommandLinePlugIns\CMDPluginLoadContext\CMDPluginContext.csproj" />
+    <ProjectReference Include="..\..\Configuration\ConfigurationCMDRun\ConfigurationCMDRun.csproj" />
+
+  </ItemGroup>
+
+</Project>

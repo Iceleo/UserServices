@@ -14,7 +14,7 @@ public interface ICommandLineRun : ICommandLine, INotifyDataErrorInfo
     Dictionary<string, string> PropertiesNotFound { get; set; }
 
     /// <summary>
-    /// Удовлетворяются ли условия начала работы класса
+    /// Проверка удовлетворяются ли условия начала работы класса
     /// </summary>
     /// <returns>True - условия начала работы класса удовлетворены</returns>
     bool IsSatisfiedBy(Dictionary<string, string> PropertiesNotFound);

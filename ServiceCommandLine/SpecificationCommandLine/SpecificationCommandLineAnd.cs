@@ -5,7 +5,7 @@ using Patterns.SpecificationClassic;
 //using UserServices.ICommandLineService;
 
 /// <summary>
-/// логическое И для вызова  приложения из командной строки. 
+/// логическое И для подкоманд вызова  приложения из командной строки. 
 /// Обе подкоманды должны вместе указываться при вызыве 
 /// </summary>
 public class SpecificationCommandLineAnd : SpecificationCommandLine<List<ICommandLineSample>>

@@ -12,7 +12,7 @@ public interface ICommandLineSample : ICommandLine
     bool ParseCommandLine(Dictionary<string, string> properties,
             List<string> ParametersCmd);
     /// <summary>
-    /// Удовлетворяются ли условия начала работы класса
+    /// Проверка удовлетворяются ли условия начала работы класса
     /// </summary>
     /// <returns>True - условия начала работы класса удовлетворены</returns>
     bool IsSatisfiedBy();

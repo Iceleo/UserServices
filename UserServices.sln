@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30317.65
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{BDEC815B-11FF-476C-8940-08EC48800F57}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceCommandLine", "ServiceCommandLine", "{8A51DD2A-58A0-44B7-86BC-A043D4D2DD79}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ICommandLineService", "ServiceCommandLine\ICommandLineService\ICommandLineService.csproj", "{963EF4CB-E51F-4B8D-970F-F6CB0400C3FD}"
 EndProject
@@ -11,11 +11,29 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpecificationClassic", "Ser
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpecificationCommandLine", "ServiceCommandLine\SpecificationCommandLine\SpecificationCommandLine.csproj", "{6540C702-6538-4A21-B4D2-876FE4308F36}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandLineService", "ServiceCommandLine\CommandLineService\CommandLineService.csproj", "{E2E68884-FB41-458E-837B-C4711F26898D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CMDLineService", "ServiceCommandLine\CMDLineService\CMDLineService.csproj", "{E2E68884-FB41-458E-837B-C4711F26898D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandLineTest", "ServiceCommandLine\CommandLineTest\CommandLineTest.csproj", "{7BFB7E19-FE3D-40C6-B8ED-46117C6DEFCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandLineTest", "CommandLineTest\CommandLineTest.csproj", "{7BFB7E19-FE3D-40C6-B8ED-46117C6DEFCC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserAttributedLib", "UserAttributedLib\UserAttributedLib.csproj", "{79CC3F1A-9EFF-4971-A231-579AA1D60AB5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandLineWPF", "CommandLineWPF\CommandLineWPF.csproj", "{131DF14B-2906-4AEA-A53B-4A0C950E0931}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CMDConfigurationTest", "CMDConfigurationTest\CMDConfigurationTest.csproj", "{2E5CFC5A-7FD0-4DB3-B820-EED21A57B358}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{5212FFB2-1CBA-4C57-9702-7D210219AA30}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConfigurationCMDRun", "Configuration\ConfigurationCMDRun\ConfigurationCMDRun.csproj", "{CBB3A543-7C6E-471C-BD19-D6C20BC8177C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CMDPlugIns", "CMDPlugIns", "{ADA9C673-B842-4E28-89F9-1C5304927EE3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CMDPluginContext", "CommandLinePlugIns\CMDPluginLoadContext\CMDPluginContext.csproj", "{64EDF8EC-E87E-4F14-B194-13C2F8D16D3C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "helpDinCommandLine", "CommandLinePlugIns\helpDinCommandLine\helpCommandLine2.csproj", "{C182FA3C-3969-44C8-9FFA-6DD7AC6C2FD6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "parseDinCommandLine", "CommandLinePlugIns\parseDinCommandLine\parseCommandLine2.csproj", "{202A700E-E12E-4AA3-91A1-C4B5A0E64D55}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "testDinCommandLine", "CommandLinePlugIns\testDinCommandLine\testCommandLine2.csproj", "{AE343C2C-9897-4956-95EC-96C1DBA6C9F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,9 +41,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BDEC815B-11FF-476C-8940-08EC48800F57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BDEC815B-11FF-476C-8940-08EC48800F57}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BDEC815B-11FF-476C-8940-08EC48800F57}.Release|Any CPU.Build.0 = Release|Any CPU
 		{963EF4CB-E51F-4B8D-970F-F6CB0400C3FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{963EF4CB-E51F-4B8D-970F-F6CB0400C3FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{963EF4CB-E51F-4B8D-970F-F6CB0400C3FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -50,9 +65,49 @@ Global
 		{79CC3F1A-9EFF-4971-A231-579AA1D60AB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79CC3F1A-9EFF-4971-A231-579AA1D60AB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79CC3F1A-9EFF-4971-A231-579AA1D60AB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{131DF14B-2906-4AEA-A53B-4A0C950E0931}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{131DF14B-2906-4AEA-A53B-4A0C950E0931}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{131DF14B-2906-4AEA-A53B-4A0C950E0931}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{131DF14B-2906-4AEA-A53B-4A0C950E0931}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E5CFC5A-7FD0-4DB3-B820-EED21A57B358}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E5CFC5A-7FD0-4DB3-B820-EED21A57B358}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E5CFC5A-7FD0-4DB3-B820-EED21A57B358}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E5CFC5A-7FD0-4DB3-B820-EED21A57B358}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBB3A543-7C6E-471C-BD19-D6C20BC8177C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBB3A543-7C6E-471C-BD19-D6C20BC8177C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBB3A543-7C6E-471C-BD19-D6C20BC8177C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBB3A543-7C6E-471C-BD19-D6C20BC8177C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64EDF8EC-E87E-4F14-B194-13C2F8D16D3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64EDF8EC-E87E-4F14-B194-13C2F8D16D3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64EDF8EC-E87E-4F14-B194-13C2F8D16D3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64EDF8EC-E87E-4F14-B194-13C2F8D16D3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C182FA3C-3969-44C8-9FFA-6DD7AC6C2FD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C182FA3C-3969-44C8-9FFA-6DD7AC6C2FD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C182FA3C-3969-44C8-9FFA-6DD7AC6C2FD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C182FA3C-3969-44C8-9FFA-6DD7AC6C2FD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{202A700E-E12E-4AA3-91A1-C4B5A0E64D55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{202A700E-E12E-4AA3-91A1-C4B5A0E64D55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{202A700E-E12E-4AA3-91A1-C4B5A0E64D55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{202A700E-E12E-4AA3-91A1-C4B5A0E64D55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE343C2C-9897-4956-95EC-96C1DBA6C9F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE343C2C-9897-4956-95EC-96C1DBA6C9F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE343C2C-9897-4956-95EC-96C1DBA6C9F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE343C2C-9897-4956-95EC-96C1DBA6C9F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{963EF4CB-E51F-4B8D-970F-F6CB0400C3FD} = {8A51DD2A-58A0-44B7-86BC-A043D4D2DD79}
+		{108B8237-7FE6-4B4E-93C7-A6BE05B4209A} = {8A51DD2A-58A0-44B7-86BC-A043D4D2DD79}
+		{6540C702-6538-4A21-B4D2-876FE4308F36} = {8A51DD2A-58A0-44B7-86BC-A043D4D2DD79}
+		{E2E68884-FB41-458E-837B-C4711F26898D} = {8A51DD2A-58A0-44B7-86BC-A043D4D2DD79}
+		{7BFB7E19-FE3D-40C6-B8ED-46117C6DEFCC} = {8A51DD2A-58A0-44B7-86BC-A043D4D2DD79}
+		{CBB3A543-7C6E-471C-BD19-D6C20BC8177C} = {5212FFB2-1CBA-4C57-9702-7D210219AA30}
+		{64EDF8EC-E87E-4F14-B194-13C2F8D16D3C} = {ADA9C673-B842-4E28-89F9-1C5304927EE3}
+		{C182FA3C-3969-44C8-9FFA-6DD7AC6C2FD6} = {ADA9C673-B842-4E28-89F9-1C5304927EE3}
+		{202A700E-E12E-4AA3-91A1-C4B5A0E64D55} = {ADA9C673-B842-4E28-89F9-1C5304927EE3}
+		{AE343C2C-9897-4956-95EC-96C1DBA6C9F1} = {ADA9C673-B842-4E28-89F9-1C5304927EE3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2C14EF8A-055B-43EB-A777-03D2781C012D}
