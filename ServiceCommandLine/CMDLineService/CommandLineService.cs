@@ -55,7 +55,7 @@ public static partial class CommandLineService //: INotifyDataErrorInfo
     /// </summary>
     /// <param name="name">'/' + имя_подкоманды.</param>
     /// <returns></returns>
-    public static CommandLineSample WithCommand(string name)
+    public static CommandLineSample CmdRunCommand(string name)
     {
         CommandLineSample cmdS =  GetOrAddCommand(name.Substring(1).Trim());
         return cmdS;

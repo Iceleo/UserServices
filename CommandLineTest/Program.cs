@@ -13,7 +13,7 @@ namespace UserServices.CommandLineWPF
         ///  шаблон параметров командной строки
         /// </summary>
         public static readonly CommandLineSample comndline =
-            CommandLineService.WithCommand("/parse")
+            CommandLineService.CmdRunCommand("/parse")
                                .MandatoryProperty("-targethost")
                                .MandatoryProperty("-pathbase")
                                .MandatoryProperty("-pathconfig")
@@ -25,11 +25,11 @@ namespace UserServices.CommandLineWPF
                  //Иначе имя пространства шаблона и исполняющего команду класса совпадают.
                  .PerformingClass("UserServices.CommandLineTest.parseCommandLine")
             ^ // XOR. Может выполняется только одна: или /help или /parse
-            CommandLineService.WithCommand("/help")
+            CommandLineService.CmdRunCommand("/help")
                           .ParameterCmdLine("CommandNameHelp")
             //имя исполняющего команду класса вместе с именем пространства
             ^ // XOR. Может выполняется  или /parse или /test
-            CommandLineService.WithCommand("/test")
+            CommandLineService.CmdRunCommand("/test")
                                .MandatoryProperty("-testbase")
                                .MandatoryProperty("-testconfig");
 //                 .PerformingClass("UserServices.CommandLineTest.testCommandLine");
